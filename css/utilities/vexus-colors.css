@@ -1,0 +1,91 @@
+/* 
+ * VEXUS ATLAS Color Scheme
+ * Defines color variables and theme colors
+ */
+
+:root {
+    /* Primary Colors */
+    --primary-color: #777777;
+    --primary-color-light: #999999;
+    --primary-color-dark: #555555;
+    
+    /* Text Colors */
+    --text-color: #2c3e50;
+    --text-color-light: #6c7a89;
+    --text-color-dark: #1a202c;
+    
+    /* Background Colors */
+    --background-color: #ffffff;
+    --background-color-alt: #f9f9f9;
+    --background-color-dark: #f5f5f5;
+    
+    /* UI Colors */
+    --success-color: #4CAF50;
+    --error-color: #F44336;
+    --warning-color: #FFC107;
+    --info-color: #2196F3;
+    
+    /* Shadow Colors */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-color-dark: rgba(0, 0, 0, 0.2);
+    
+    /* Border Colors */
+    --border-color: rgba(0, 0, 0, 0.1);
+    --border-color-light: rgba(0, 0, 0, 0.05);
+    
+    /* Overlay Colors */
+    --overlay-color: rgba(0, 0, 0, 0.5);
+    --overlay-color-light: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark Mode Colors */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Primary Colors */
+        --primary-color: #999999;
+        --primary-color-light: #aaaaaa;
+        --primary-color-dark: #777777;
+        
+        /* Text Colors */
+        --text-color: #e1e1e1;
+        --text-color-light: #b0b0b0;
+        --text-color-dark: #ffffff;
+        
+        /* Background Colors */
+        --background-color: #1a1a1a;
+        --background-color-alt: #222222;
+        --background-color-dark: #333333;
+        
+        /* Shadow Colors */
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --shadow-color-dark: rgba(0, 0, 0, 0.5);
+        
+        /* Border Colors */
+        --border-color: rgba(255, 255, 255, 0.1);
+        --border-color-light: rgba(255, 255, 255, 0.05);
+        
+        /* Overlay Colors */
+        --overlay-color: rgba(0, 0, 0, 0.7);
+        --overlay-color-light: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Color Utility Classes */
+.text-primary { color: var(--primary-color); }
+.text-success { color: var(--success-color); }
+.text-error { color: var(--error-color); }
+.text-warning { color: var(--warning-color); }
+.text-info { color: var(--info-color); }
+
+.bg-primary { background-color: var(--primary-color); }
+.bg-success { background-color: var(--success-color); }
+.bg-error { background-color: var(--error-color); }
+.bg-warning { background-color: var(--warning-color); }
+.bg-info { background-color: var(--info-color); }
+
+/* Border Utility Classes */
+.border-primary { border-color: var(--primary-color); }
+.border-success { border-color: var(--success-color); }
+.border-error { border-color: var(--error-color); }
+.border-warning { border-color: var(--warning-color); }
+.border-info { border-color: var(--info-color); }

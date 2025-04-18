@@ -1,0 +1,19 @@
+<svg width="400" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Card background with subtle pattern -->
+  <rect width="400" height="600" fill="#ffffff" />
+  
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+  </pattern>
+  <rect width="400" height="600" fill="url(#grid)" />
+  
+  <!-- Corner decorations -->
+  <path d="M 0 0 L 50 0 Q 60 0 60 10 L 60 50 Q 60 60 50 60 L 0 60 Z" fill="#6e52a1" opacity="0.1" />
+  <path d="M 400 0 L 350 0 Q 340 0 340 10 L 340 50 Q 340 60 350 60 L 400 60 Z" fill="#6e52a1" opacity="0.1" />
+  <path d="M 0 600 L 50 600 Q 60 600 60 590 L 60 550 Q 60 540 50 540 L 0 540 Z" fill="#6e52a1" opacity="0.1" />
+  <path d="M 400 600 L 350 600 Q 340 600 340 590 L 340 550 Q 340 540 350 540 L 400 540 Z" fill="#6e52a1" opacity="0.1" />
+  
+  <!-- Subtle border -->
+  <rect x="5" y="5" width="390" height="590" rx="10" ry="10" fill="none" stroke="#e0e0e0" stroke-width="1" />
+</svg> 

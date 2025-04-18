@@ -1,0 +1,217 @@
+/* 
+ * Image Gallery Responsive Styles
+ * Media queries and responsive adjustments
+ */
+
+/* Small Screens (Mobile) */
+@media screen and (max-width: 480px) {
+    /* Base Adjustments */
+    :root {
+        --tag-padding: 0.5em 0.8em;
+        --tag-font-size: 0.85em;
+        --container-padding: 1em;
+        --grid-gap: 1em;
+    }
+
+    /* Container */
+    .container {
+        padding: var(--container-padding);
+    }
+
+    /* Grid Layout */
+    .gallery-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: var(--grid-gap);
+    }
+
+    /* Filter System */
+    .filter-container {
+        padding: 1em;
+    }
+
+    .filter-groups {
+        flex-direction: column;
+        gap: 1.5em;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    /* Modal */
+    .modal-container {
+        width: 95vw;
+        max-height: 95vh;
+    }
+
+    .modal-info {
+        padding: 1em;
+    }
+
+    .modal-title {
+        font-size: 1.2em;
+    }
+
+    /* Form Elements */
+    .search-input {
+        padding: 0.8em 1em;
+        padding-left: 2.5em;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .form-button {
+        width: 100%;
+    }
+}
+
+/* Medium Screens (Tablets) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    /* Base Adjustments */
+    :root {
+        --tag-padding: 0.6em 1em;
+        --tag-font-size: 0.9em;
+        --container-padding: 1.5em;
+        --grid-gap: 1.5em;
+    }
+
+    /* Grid Layout */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Filter System */
+    .filter-container {
+        padding: 1.5em;
+    }
+
+    .filter-groups {
+        gap: 2em;
+    }
+
+    /* Modal */
+    .modal-container {
+        width: 90vw;
+    }
+
+    .modal-info {
+        padding: 1.2em;
+    }
+}
+
+/* Large Screens (Desktop) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Base Adjustments */
+    :root {
+        --tag-padding: 0.7em 1.2em;
+        --tag-font-size: 0.95em;
+        --container-padding: 2em;
+        --grid-gap: 2em;
+    }
+
+    /* Grid Layout */
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Filter System */
+    .filter-container {
+        padding: 2em;
+    }
+}
+
+/* Extra Large Screens */
+@media screen and (min-width: 1025px) {
+    /* Base Adjustments */
+    :root {
+        --tag-padding: 0.8em 1.5em;
+        --tag-font-size: 1em;
+        --container-padding: 2.5em;
+        --grid-gap: 2.5em;
+    }
+
+    /* Grid Layout */
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* High Resolution Screens */
+@media screen and (min-resolution: 192dpi) {
+    /* Enhance visual quality for high DPI displays */
+    .gallery-item img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Landscape Orientation */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .modal-container {
+        max-height: 90vh;
+        flex-direction: row;
+    }
+
+    .modal-image {
+        max-height: 90vh;
+        max-width: 60%;
+    }
+
+    .modal-info {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* Print Styles */
+@media print {
+    /* Hide unnecessary elements */
+    .filter-container,
+    .modal-controls,
+    .modal-nav {
+        display: none !important;
+    }
+
+    /* Adjust layout for printing */
+    .gallery-grid {
+        display: block;
+    }
+
+    .gallery-item {
+        page-break-inside: avoid;
+        margin-bottom: 2em;
+    }
+
+    /* Ensure proper contrast */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    /* Add URLs for links */
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: var(--dark-bg-color);
+        --text-color: var(--dark-text-color);
+        --border-color: var(--dark-border-color);
+        --shadow-color: var(--dark-shadow-color);
+    }
+} 

@@ -1,0 +1,26 @@
+/* 
+ * Image Gallery Main Stylesheet
+ * Imports all modular CSS files (Updated)
+ */
+
+/* Core styles first */
+@import "image-gallery/base.css";
+@import "image-gallery/container.css";
+@import "image-gallery/grid.css";
+
+/* Interactive elements */
+@import "image-gallery/tags.css";
+@import "image-gallery/filter.css";
+@import "image-gallery/form.css";
+
+/* Visual enhancements */
+@import "image-gallery/animations.css";
+@import "image-gallery/fancybox.css";
+
+/* Removed empty file: accessibility.css */
+
+/* Theme variations */
+@import "image-gallery/dark-mode.css";
+
+/* Must be last to override other styles */
+@import "image-gallery/responsive.css";

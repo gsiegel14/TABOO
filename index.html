@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Taboo Game - VEXUS ATLAS</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../html5up-phantom/assets/css-new/main.css" />
+    <link rel="stylesheet" href="css/taboo.css" />
+    <noscript><link rel="stylesheet" href="../html5up-phantom/assets/css/noscript.css" /></noscript>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    
+    <!-- Polyfills for IE11 and older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.forEach%2CPromise%2CObject.values%2CArray.prototype.includes"></script>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <header id="header">
+            <div class="inner">
+                <a href="../index.html" class="logo">
+                    <span class="symbol"><img src="../images/VEXUS.ATLAS.png" alt="" /></span>
+                    <span class="title">VEXUS ATLAS</span>
+                </a>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <nav id="menu">
+            <div class="inner">
+                <div class="logo-container">
+                    <img src="../images/VEXUS.ATLAS.png" alt="VEXUS ATLAS Logo" class="sidebar-logo">
+                </div>
+                <h2>Menu</h2>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../education.html">VEXUS Overview</a></li>
+                    <li><a href="../acquisition.html">Image Acquisition Guide</a></li>
+                    <li><a href="../waveform.html">Waveforms</a></li>
+                    <li><a href="../calculator.html">AI Image Recognition</a></li>
+                    <li><a href="../ai-chat.html">AI Chat</a></li>
+                    <li><a href="../Publications.html">Publications</a></li>
+                    <li><a href="../literature_review.html">Literature Review</a></li>
+                    <li><a href="../image_gallery.html">Image Gallery</a></li>
+                    <li><a href="../about.html">About VEXUS ATLAS</a></li>
+                    <li><a href="../our_team.html">Our Team</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="index.html" class="active">Taboo Game</a></li>
+                </ul>
+                <a href="#" class="close-x" aria-label="Close Menu"></a>
+            </div>
+        </nav>
+
+        <div id="main">
+            <div class="inner">
+                <div class="game-logo">
+                    <img src="images/taboo-logo.svg" alt="Taboo Game Logo">
+                    <h1>Taboo Game</h1>
+                    <p>A fun way to test your VEXUS knowledge! Describe the target word without using any of the taboo words.</p>
+                </div>
+                
+                <div class="game-controls">
+                    <div class="timer-section">
+                        <div class="timer" id="timer">60</div>
+                        <div class="timer-controls">
+                            <button id="start-timer" class="button primary small"><i class="fas fa-play"></i></button>
+                            <button id="pause-timer" class="button primary small"><i class="fas fa-pause"></i></button>
+                            <button id="reset-timer" class="button primary small"><i class="fas fa-redo"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="score-section">
+                        <div class="team-score">
+                            <h3>Team 1</h3>
+                            <div class="score" id="team1-score">0</div>
+                            <div class="score-controls">
+                                <button id="team1-plus" class="button small success"><i class="fas fa-plus"></i></button>
+                                <button id="team1-minus" class="button small danger"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="team-score">
+                            <h3>Team 2</h3>
+                            <div class="score" id="team2-score">0</div>
+                            <div class="score-controls">
+                                <button id="team2-plus" class="button small success"><i class="fas fa-plus"></i></button>
+                                <button id="team2-minus" class="button small danger"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="taboo-card-container">
+                    <div class="taboo-card" id="taboo-card">
+                        <div class="card-header">
+                            <h2 class="target-word" id="target-word">Loading...</h2>
+                        </div>
+                        <div class="card-body">
+                            <ul class="taboo-words" id="taboo-words">
+                                <li>Loading taboo words...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card-navigation">
+                        <button id="prev-card" class="button primary"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button id="next-card" class="button primary">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="game-instructions">
+                    <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+                    <ol>
+                        <li><strong>Setup:</strong> Divide players into two teams.</li>
+                        <li><strong>Gameplay:</strong> One player from a team tries to get their teammates to say the target word at the top of the card.</li>
+                        <li><strong>Challenge:</strong> The player CANNOT use any of the taboo words listed on the card.</li>
+                        <li><strong>Scoring:</strong> Teams earn one point for each correctly guessed word. Use the + buttons to track points.</li>
+                        <li><strong>Timer:</strong> Each round lasts 60 seconds. Use the timer controls to start/pause.</li>
+                        <li><strong>Navigation:</strong> Use the Previous/Next buttons or left/right arrow keys to move between cards.</li>
+                        <li><strong>Tips:</strong> Space bar toggles the timer. Try to use synonyms, descriptions, or related concepts.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="inner">
+                <section>
+                    <h2>About the Game</h2>
+                    <p>
+                        This Taboo game was designed to help healthcare professionals and students learn VEXUS-related medical terminology in a fun, interactive way. The game features terms related to ultrasound, vascular anatomy, and medical imaging.
+                    </p>
+                </section>
+                <section>
+                    <h2>Credits</h2>
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+                        <li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                </section>
+                <ul class="copyright">
+                    <li>&copy; VEXUS ATLAS. All rights reserved</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../html5up-phantom/assets/js/jquery.min.js"></script>
+    
+    <!-- Core JavaScript Files -->
+    <script src="../html5up-phantom/assets/js-new/core/browser.js"></script>
+    <script src="../html5up-phantom/assets/js-new/core/breakpoints.js"></script>
+    <script src="../html5up-phantom/assets/js-new/core/util.js"></script>
+    <script src="../html5up-phantom/assets/js-new/core/performance-utils.js"></script>
+    
+    <!-- Component JavaScript Files -->
+    <script src="../html5up-phantom/assets/js-new/components/menu-toggle.js"></script>
+    
+    <!-- Game JS - Note: Order matters for dependency resolution -->
+    <script src="js/card-data.js"></script>
+    <script src="js/taboo.js"></script>
+    
+    <!-- Error handling -->
+    <script>
+        window.addEventListener('error', function(e) {
+            console.error('Game error:', e.message);
+            // Display user-friendly error
+            if (document.getElementById('taboo-card')) {
+                document.getElementById('target-word').textContent = 'Oops! Something went wrong.';
+                document.getElementById('taboo-words').innerHTML = '<li>Please refresh the page to try again</li><li>If the problem persists, check your browser console</li>';
+            }
+        });
+    </script>
+</body>
+</html> 

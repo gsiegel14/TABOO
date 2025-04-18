@@ -1,0 +1,1221 @@
+/* 
+ * VEXUS Image Gallery - Consolidated CSS
+ * Combines all separate component CSS files into one for better performance
+ * Version: 1.4 (Refactored)
+ */
+
+/*----------------------------------------------
+  BASE STYLES & VARIABLES
+-----------------------------------------------*/
+:root {
+    /* Base Tag Properties */
+    --tag-size: 2.0em; /* Reduced size for smaller tag boxes */
+    --tag-padding: 0.3em;
+    --tag-border-radius: 3px; /* Slight rounding for more refined look */
+    --tag-font-size: 0.75em;
+    --tag-font-weight: 500;
+    --tag-letter-spacing: 0.5px;
+    --tag-text-transform: uppercase;
+    --tag-transition: all 0.2s ease;
+    
+    /* Base Tag Colors */
+    --tag-bg-color: #f5f5f5; /* Lighter grey background for refined look */
+    --tag-text-color: #444; /* Darker text for better contrast */
+    --tag-border-color: #e6e6e6;
+    --tag-border-width: 1px;
+    --tag-box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    
+    /* Tag States */
+    --tag-hover-bg-color: #ffffff;
+    --tag-hover-text-color: #222;
+    --tag-hover-border-color: #d0d0d0;
+    --tag-hover-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --tag-hover-transform: translateY(-2px);
+    
+    --tag-active-bg-color: #eef5fd;
+    --tag-active-text-color: #1976d2;
+    --tag-active-border-color: #1976d2;
+    --tag-active-box-shadow: 0 2px 5px rgba(25, 118, 210, 0.15);
+    
+    --tag-focus-outline: 2px solid #1976d2;
+    --tag-focus-outline-offset: 2px;
+    
+    /* Quality Tag Colors */
+    --tag-quality-high: #2e7d32; /* Green */
+    --tag-quality-high-bg: #f5f5f5;
+    --tag-quality-high-border: #e0e0e0;
+    --tag-quality-high-filter-bg: #e8f5e9;
+    --tag-quality-high-filter-border: #c8e6c9;
+    
+    --tag-quality-medium: #f57c00; /* Orange */
+    --tag-quality-medium-bg: #f5f5f5;
+    --tag-quality-medium-border: #e0e0e0;
+    --tag-quality-medium-filter-bg: #fff8e1;
+    --tag-quality-medium-filter-border: #ffecb3;
+    
+    --tag-quality-low: #c62828; /* Red */
+    --tag-quality-low-bg: #f5f5f5;
+    --tag-quality-low-border: #e0e0e0;
+    --tag-quality-low-filter-bg: #ffebee;
+    --tag-quality-low-filter-border: #ffcdd2;
+    
+    /* Vein Type Tag Colors */
+    --tag-vein-hepatic: #1976d2; /* Blue */
+    --tag-vein-hepatic-bg: #f5f5f5;
+    --tag-vein-hepatic-border: #e0e0e0;
+    --tag-vein-hepatic-filter-bg: #e3f2fd;
+    --tag-vein-hepatic-filter-border: #bbdefb;
+    
+    --tag-vein-portal: #7b1fa2; /* Purple */
+    --tag-vein-portal-bg: #f5f5f5;
+    --tag-vein-portal-border: #e0e0e0;
+    --tag-vein-portal-filter-bg: #f3e5f5;
+    --tag-vein-portal-filter-border: #e1bee7;
+    
+    --tag-vein-renal: #00838f; /* Teal */
+    --tag-vein-renal-bg: #f5f5f5;
+    --tag-vein-renal-border: #e0e0e0;
+    --tag-vein-renal-filter-bg: #e8f5e9; /* Using green like quality high for consistency */
+    --tag-vein-renal-filter-border: #c8e6c9;
+    
+    /* Waveform Tag Colors */
+    --tag-waveform-normal: #2e7d32; /* Green */
+    --tag-waveform-normal-bg: #f5f5f5;
+    --tag-waveform-normal-border: #e0e0e0;
+    --tag-waveform-normal-filter-bg: #e3f2fd; /* Using blue like hepatic for consistency */
+    --tag-waveform-normal-filter-border: #bbdefb;
+    
+    --tag-waveform-mild: #f57c00; /* Orange */
+    --tag-waveform-mild-bg: #f5f5f5;
+    --tag-waveform-mild-border: #e0e0e0;
+    --tag-waveform-mild-filter-bg: #fff8e1;
+    --tag-waveform-mild-filter-border: #ffecb3;
+    
+    --tag-waveform-severe: #c62828; /* Red */
+    --tag-waveform-severe-bg: #f5f5f5;
+    --tag-waveform-severe-border: #e0e0e0;
+    --tag-waveform-severe-filter-bg: #ffebee;
+    --tag-waveform-severe-filter-border: #ffcdd2;
+    
+    /* QA Tag Colors */
+    --tag-qa-yes: #2e7d32; /* Green */
+    --tag-qa-yes-bg: #f5f5f5;
+    --tag-qa-yes-border: #e0e0e0;
+    --tag-qa-yes-filter-bg: #e8f5e9;
+    --tag-qa-yes-filter-border: #c8e6c9;
+    
+    --tag-qa-no: #757575; /* Grey */
+    --tag-qa-no-bg: #f5f5f5;
+    --tag-qa-no-border: #e0e0e0;
+    --tag-qa-no-filter-bg: #f5f5f5;
+    --tag-qa-no-filter-border: #e0e0e0;
+    
+    /* Analysis Tag Colors */
+    --tag-analysis: #3949ab; /* Indigo */
+    --tag-analysis-bg: #f5f5f5;
+    --tag-analysis-border: #e0e0e0;
+    /* No filter equivalent */
+    
+    /* Subtype Tag Colors */
+    --tag-subtype: #795548; /* Brown */
+    --tag-subtype-bg: #f5f5f5;
+    --tag-subtype-border: #e0e0e0;
+    --tag-subtype-filter-bg: #f3e5f5; /* Using purple like portal */
+    --tag-subtype-filter-border: #e1bee7;
+    
+    /* Filter Tag Specific Colors */
+    --filter-tag-bg: #f5f7fa;
+    --filter-tag-text: #555;
+    --filter-tag-border: #e0e4e9;
+    --filter-tag-hover-bg: #e9e9e9;
+    --filter-tag-hover-border: #ccc;
+    --filter-tag-active-bg: #e6f7f4;
+    --filter-tag-active-text: #43c3ac;
+    --filter-tag-active-border: #c5ebe5;
+    --filter-tag-all-bg: var(--filter-tag-active-bg);
+    --filter-tag-all-text: var(--filter-tag-active-text);
+    --filter-tag-all-border: var(--filter-tag-active-border);
+    
+    /* Dark Mode Colors */
+    --dark-tag-bg: #2a2a2a;
+    --dark-tag-text: #fff;
+    --dark-tag-border: #404040;
+    --dark-tag-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    
+    --dark-tag-hover-bg: #404040;
+    --dark-tag-hover-text: #fff;
+    --dark-tag-hover-border: #505050;
+    
+    --dark-tag-active-bg: #1a237e;
+    --dark-tag-active-text: #fff;
+    --dark-tag-active-border: #283593;
+
+    /* Spinner */
+    --spinner-color: #43c3ac;
+    --spinner-bg: #f3f3f3;
+
+    /* Tooltip */
+    --tooltip-bg: rgba(0, 0, 0, 0.75);
+    --tooltip-text: white;
+}
+
+/* Base Tag Component (Used in gallery items) */
+.tag {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
+    padding: var(--tag-padding);
+    border-radius: var(--tag-border-radius);
+    margin: 0.15em; /* Default margin */
+    
+    /* Dimensions (used for square tags in gallery items) */
+    width: var(--tag-size);
+    height: var(--tag-size);
+    min-width: var(--tag-size);
+    min-height: var(--tag-size);
+    
+    /* Typography */
+    font-size: var(--tag-font-size);
+    font-weight: var(--tag-font-weight);
+    letter-spacing: var(--tag-letter-spacing);
+    text-transform: var(--tag-text-transform);
+    line-height: 1;
+    
+    /* Visual */
+    background-color: var(--tag-bg-color);
+    color: var(--tag-text-color);
+    border: var(--tag-border-width) solid var(--tag-border-color);
+    box-shadow: var(--tag-box-shadow);
+    
+    /* Interaction */
+    cursor: default; /* Tags are usually not interactive */
+    transition: var(--tag-transition);
+    user-select: none;
+    position: relative;
+    
+    /* Accessibility */
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Tag States (Mainly for interactive tags like filter tags) */
+.tag:hover {
+    background-color: var(--tag-hover-bg-color);
+    color: var(--tag-hover-text-color);
+    border-color: var(--tag-hover-border-color);
+    box-shadow: var(--tag-hover-box-shadow);
+    transform: var(--tag-hover-transform);
+    z-index: 5;
+}
+
+.tag:focus-visible {
+    outline: var(--tag-focus-outline);
+    outline-offset: var(--tag-focus-outline-offset);
+}
+
+/* Active state for interactive tags */
+.tag.active {
+    background-color: var(--tag-active-bg-color);
+    color: var(--tag-active-text-color);
+    border-color: var(--tag-active-border-color);
+    box-shadow: var(--tag-active-box-shadow);
+}
+
+/*----------------------------------------------
+  CONTAINER & LAYOUT STYLES
+-----------------------------------------------*/
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-container .logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.title-container {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.title-container p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+/*----------------------------------------------
+  GALLERY GRID LAYOUT
+-----------------------------------------------*/
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 35px; /* Slightly increased gap */
+    margin-top: 20px;
+    width: 100%; /* Ensure grid takes full width */
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Items are clickable (Fancybox) */
+    min-height: 300px; /* Ensure minimum height even if image fails */
+    border: 1px solid #ddd; /* Added border for definition */
+    margin-bottom: 20px; /* Added margin for separation */
+    /* Removed height: 0 and padding-bottom calc - handled by JS/min-height */
+}
+
+/* Class added by JS to ensure visibility */
+.gallery-item-visible {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    border-radius: 8px; /* Ensure consistency */
+    overflow: hidden; /* Ensure consistency */
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    z-index: 5;
+}
+
+/* Gallery Item Link (for Fancybox) */
+.gallery-item .gallery-link {
+    display: block;
+    width: 100%;
+    /* Height is now intrinsic based on image, removed fixed aspect ratio */
+    position: relative;
+    overflow: hidden;
+    min-height: 200px; /* Minimum height for link area */
+}
+
+/* Gallery Item Thumbnail Image */
+.gallery-item .gallery-thumbnail {
+    position: absolute; /* Position within link container */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background-color: #f8f8f8; /* Placeholder background */
+    transition: filter 0.3s ease;
+    visibility: visible; /* Ensure visibility */
+    opacity: 1; /* Ensure visibility */
+    /* Removed min-height, handled by gallery-link */
+}
+
+.gallery-item:hover .gallery-thumbnail {
+    filter: brightness(1.05); /* Slightly brighten the image on hover */
+}
+
+/* Gallery Item Info Overlay */
+.gallery-info {
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 2;
+}
+
+.gallery-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+    line-height: 1.3;
+    color: #333; /* Ensure text color */
+}
+
+/* Gallery Item Tags Container */
+.gallery-info .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 5px; /* Add some space above tags */
+    justify-content: flex-start;
+    align-items: center;
+    position: relative; /* Needed for tooltips potentially */
+    z-index: 2;
+}
+
+/* Specific styling for tags within gallery items */
+.gallery-info .tag {
+    margin: 0; /* Override default tag margin */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+    cursor: pointer; /* Tags in gallery trigger tooltip */
+    position: relative; /* For tooltip positioning */
+    z-index: 5; /* Ensure tags are hoverable over info */
+}
+
+/* Gallery Item Tag Hover (Overrides base tag hover) */
+.gallery-info .tag:hover {
+    z-index: 10; /* Higher z-index on hover */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+/* No Results Message */
+.no-results {
+    grid-column: 1 / -1; /* Span all columns */
+    text-align: center;
+    padding: 3rem;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    display: none; /* Hidden by default */
+}
+
+.no-results h3 {
+    font-size: 1.5em;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.no-results p {
+    font-size: 1.1em;
+    max-width: 500px;
+    margin: 0 auto;
+    color: #666;
+}
+
+.no-results.error {
+    background-color: #fff5f5;
+    border: 1px solid #f5c6cb;
+}
+.no-results.error h3 {
+    color: #721c24;
+}
+.no-results.error p {
+    color: #721c24;
+}
+
+/* Loading Indicator */
+#loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+    grid-column: 1 / -1; /* Span all columns */
+}
+
+#loading-indicator > div {
+    /* Container for spinner and text */
+}
+
+#loading-indicator .spinner {
+    border: 4px solid var(--spinner-bg);
+    border-top: 4px solid var(--spinner-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto 20px;
+}
+
+#loading-indicator p {
+    color: #666;
+    font-size: 1em;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*----------------------------------------------
+  TAG COLOR STYLES (Gallery Item Specific)
+-----------------------------------------------*/
+/* Quality Tags */
+.gallery-info .tag.quality-tag.quality-high {
+    background-color: var(--tag-quality-high-bg);
+    color: var(--tag-quality-high);
+    border-color: var(--tag-quality-high-border);
+}
+.gallery-info .tag.quality-tag.quality-medium {
+    background-color: var(--tag-quality-medium-bg);
+    color: var(--tag-quality-medium);
+    border-color: var(--tag-quality-medium-border);
+}
+.gallery-info .tag.quality-tag.quality-low {
+    background-color: var(--tag-quality-low-bg);
+    color: var(--tag-quality-low);
+    border-color: var(--tag-quality-low-border);
+}
+
+/* Vein Type Tags */
+.gallery-info .tag.vein-tag.vein-hepatic {
+    background-color: var(--tag-vein-hepatic-bg);
+    color: var(--tag-vein-hepatic);
+    border-color: var(--tag-vein-hepatic-border);
+}
+.gallery-info .tag.vein-tag.vein-portal {
+    background-color: var(--tag-vein-portal-bg);
+    color: var(--tag-vein-portal);
+    border-color: var(--tag-vein-portal-border);
+}
+.gallery-info .tag.vein-tag.vein-renal {
+    background-color: var(--tag-vein-renal-bg);
+    color: var(--tag-vein-renal);
+    border-color: var(--tag-vein-renal-border);
+}
+
+/* Waveform Tags */
+.gallery-info .tag.waveform-tag.waveform-normal {
+    background-color: var(--tag-waveform-normal-bg);
+    color: var(--tag-waveform-normal);
+    border-color: var(--tag-waveform-normal-border);
+}
+.gallery-info .tag.waveform-tag.waveform-mild {
+    background-color: var(--tag-waveform-mild-bg);
+    color: var(--tag-waveform-mild);
+    border-color: var(--tag-waveform-mild-border);
+}
+.gallery-info .tag.waveform-tag.waveform-severe {
+    background-color: var(--tag-waveform-severe-bg);
+    color: var(--tag-waveform-severe);
+    border-color: var(--tag-waveform-severe-border);
+}
+
+/* QA Tags */
+.gallery-info .tag.qa-tag.qa-yes {
+    background-color: var(--tag-qa-yes-bg);
+    color: var(--tag-qa-yes);
+    border-color: var(--tag-qa-yes-border);
+}
+.gallery-info .tag.qa-tag.qa-no {
+    background-color: var(--tag-qa-no-bg);
+    color: var(--tag-qa-no);
+    border-color: var(--tag-qa-no-border);
+}
+
+/* Analysis Tags */
+.gallery-info .tag.analysis-tag {
+    background-color: var(--tag-analysis-bg);
+    color: var(--tag-analysis);
+    border-color: var(--tag-analysis-border);
+}
+
+/* Subtype Tags */
+.gallery-info .tag.subtype-tag {
+    background-color: var(--tag-subtype-bg);
+    color: var(--tag-subtype);
+    border-color: var(--tag-subtype-border);
+}
+
+/*----------------------------------------------
+  TOOLTIP STYLES (Used by JS)
+-----------------------------------------------*/
+/* Tooltip displayed over the image */
+.gallery-tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text);
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    display: none; /* Initially hidden, shown by JS */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 6; /* Above image info, below gallery item hover state */
+    border-radius: 8px 8px 0 0; /* Match gallery item top radius */
+    pointer-events: none; /* Allow clicks through to image */
+    word-wrap: break-word;
+    overflow: auto;
+    max-height: 100%;
+}
+
+/* Hide the browser's default tooltip for tags with data-tooltip */
+.gallery-info .tag[data-tooltip]:hover::after,
+.gallery-info .tag[data-tooltip]:hover::before {
+    display: none;
+}
+
+/*----------------------------------------------
+  FILTER SYSTEM STYLES (Consolidated)
+-----------------------------------------------*/
+/* Main filter system container */
+.filter-system {
+    margin-bottom: 30px;
+}
+
+/* Search Box */
+.search-wrapper {
+    margin-bottom: 20px;
+    max-width: 600px; /* Allow slightly wider search */
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 5px 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.search-icon {
+    color: #aaa;
+    margin-right: 8px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px 5px;
+    font-size: 14px;
+    background: none;
+}
+
+.clear-search-btn {
+    background: none;
+    border: none;
+    padding: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #aaa;
+    display: flex; /* Ensure icon is vertically centered */
+    align-items: center;
+    justify-content: center;
+}
+.clear-search-btn:hover {
+    color: #777;
+}
+.clear-search-btn svg {
+    display: block; /* Prevents extra space below SVG */
+}
+
+/* Filter Categories Section */
+.filter-categories {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.filter-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+#filter-count {
+    font-weight: 500;
+}
+
+.clear-all-btn {
+    cursor: pointer;
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    color: #555;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border: 1px solid #ddd;
+    font-weight: 500;
+}
+.clear-all-btn:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    overflow-x: auto; /* Allow horizontal scroll on small screens */
+    white-space: nowrap;
+}
+
+.filter-tab {
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.95rem;
+    color: #555;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    margin-bottom: -1px; /* Align bottom border */
+}
+.filter-tab:hover {
+    color: #333;
+}
+.filter-tab.active {
+    color: var(--spinner-color); /* Use theme color */
+    border-bottom-color: var(--spinner-color);
+    font-weight: 500;
+}
+
+/* Filter Panels */
+.filter-panels {
+    /* Styles for the container of panels */
+}
+
+.filter-panel {
+    display: none; /* Hidden by default */
+}
+.filter-panel.active {
+    display: block; /* Shown when active */
+}
+
+/* Layout within "All Filters" panel */
+.filter-panel[data-panel="all"] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Filter Sections (within panels) */
+.filter-section {
+    margin-bottom: 15px;
+}
+.filter-section.full-width {
+    grid-column: 1 / -1; /* Span full width in grid layouts */
+}
+
+.filter-title { /* Renamed from filter-group-title */
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 10px; /* Increased spacing */
+    margin-top: 0; /* Reset top margin */
+}
+
+/* Filter Tags Container */
+.filter-tags { /* Renamed from tag-container */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* Consistent gap */
+}
+
+/* Filter Tag Styling */
+.filter-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px; /* Adjusted padding */
+    margin: 2px 0; /* Removed side margin, only top/bottom */
+    border-radius: 6px; /* Slightly larger radius */
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: var(--filter-tag-bg); /* Default background */
+    color: var(--filter-tag-text); /* Default text */
+    border: 1px solid var(--filter-tag-border); /* Default border */
+    border-left-width: 3px; /* Add space for category color indicator */
+    border-left-color: transparent; /* Default transparent left border */
+    padding-left: 11px; /* Adjust padding for border */
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    user-select: none;
+}
+
+.filter-tag:not(.active):hover { /* Hover for inactive tags */
+    background-color: var(--filter-tag-hover-bg);
+    border-color: var(--filter-tag-hover-border);
+    border-left-color: var(--filter-tag-hover-border); /* Match hover border */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-tag.active {
+    background-color: var(--filter-tag-active-bg);
+    color: var(--filter-tag-active-text);
+    border-color: var(--filter-tag-active-border);
+    box-shadow: 0 2px 4px rgba(67, 195, 172, 0.2); /* Adjusted shadow */
+}
+
+/* Use text and left border for category indication on inactive tags */
+.filter-tags[data-filter-group="quality"] .filter-tag[data-value="high"]:not(.active) { color: var(--tag-quality-high); border-left-color: var(--tag-quality-high); }
+.filter-tags[data-filter-group="quality"] .filter-tag[data-value="medium"]:not(.active) { color: var(--tag-quality-medium); border-left-color: var(--tag-quality-medium); }
+.filter-tags[data-filter-group="quality"] .filter-tag[data-value="low"]:not(.active) { color: var(--tag-quality-low); border-left-color: var(--tag-quality-low); }
+
+.filter-tags[data-filter-group="vein"] .filter-tag[data-value="hepatic"]:not(.active) { color: var(--tag-vein-hepatic); border-left-color: var(--tag-vein-hepatic); }
+.filter-tags[data-filter-group="vein"] .filter-tag[data-value="portal"]:not(.active) { color: var(--tag-vein-portal); border-left-color: var(--tag-vein-portal); }
+.filter-tags[data-filter-group="vein"] .filter-tag[data-value="renal"]:not(.active) { color: var(--tag-vein-renal); border-left-color: var(--tag-vein-renal); }
+
+.filter-tags[data-filter-group="waveform"] .filter-tag[data-value="normal"]:not(.active) { color: var(--tag-waveform-normal); border-left-color: var(--tag-waveform-normal); }
+.filter-tags[data-filter-group="waveform"] .filter-tag[data-value="mild"]:not(.active) { color: var(--tag-waveform-mild); border-left-color: var(--tag-waveform-mild); }
+.filter-tags[data-filter-group="waveform"] .filter-tag[data-value="severe"]:not(.active) { color: var(--tag-waveform-severe); border-left-color: var(--tag-waveform-severe); }
+
+.filter-tags[data-filter-group="qa"] .filter-tag[data-value="yes"]:not(.active) { color: var(--tag-qa-yes); border-left-color: var(--tag-qa-yes); }
+.filter-tags[data-filter-group="qa"] .filter-tag[data-value="no"]:not(.active) { color: var(--tag-qa-no); border-left-color: var(--tag-qa-no); }
+
+.filter-tags[data-filter-group="subtype"] .filter-tag:not([data-value="all"]):not(.active) { color: var(--tag-subtype); border-left-color: var(--tag-subtype); }
+
+/* 'All' Filter Tag */
+.filter-tag[data-value="all"] {
+    background-color: var(--filter-tag-bg);
+    color: var(--filter-tag-text);
+    border: 1px solid var(--filter-tag-border);
+    border-left: 3px solid #aaa; /* Subtle indicator for 'All' */
+    padding-left: 11px;
+}
+.filter-tag[data-value="all"].active {
+    background-color: var(--filter-tag-all-bg);
+    color: var(--filter-tag-all-text);
+    border-color: var(--filter-tag-all-border);
+    border-left-color: var(--filter-tag-all-border);
+    box-shadow: 0 2px 4px rgba(67, 195, 172, 0.2);
+}
+
+
+/* Active Filter Chips Display */
+.active-filters-display {
+    margin-top: 20px;
+    min-height: 30px; /* Ensure space even when empty */
+}
+
+.active-filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-chip {
+    background-color: #e9f5ff; /* Default background */
+    color: #555; /* Default text */
+    padding: 5px 10px;
+    border-radius: 15px; /* Pill shape */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #ddd; /* Default border */
+}
+
+.filter-chip-category {
+    font-weight: 600;
+    opacity: 0.7;
+    margin-right: 3px;
+}
+
+.remove-filter {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: inherit; /* Inherit color from chip */
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    border: none;
+    padding: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.remove-filter:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Color specific styles for filter chips */
+.filter-chip[id^="chip-quality-high"] { background-color: var(--tag-quality-high-filter-bg); border-color: var(--tag-quality-high-filter-border); color: var(--tag-quality-high); }
+.filter-chip[id^="chip-quality-medium"] { background-color: var(--tag-quality-medium-filter-bg); border-color: var(--tag-quality-medium-filter-border); color: var(--tag-quality-medium); }
+.filter-chip[id^="chip-quality-low"] { background-color: var(--tag-quality-low-filter-bg); border-color: var(--tag-quality-low-filter-border); color: var(--tag-quality-low); }
+.filter-chip[id^="chip-vein-hepatic"] { background-color: var(--tag-vein-hepatic-filter-bg); border-color: var(--tag-vein-hepatic-filter-border); color: var(--tag-vein-hepatic); }
+.filter-chip[id^="chip-vein-portal"] { background-color: var(--tag-vein-portal-filter-bg); border-color: var(--tag-vein-portal-filter-border); color: var(--tag-vein-portal); }
+.filter-chip[id^="chip-vein-renal"] { background-color: var(--tag-vein-renal-filter-bg); border-color: var(--tag-vein-renal-filter-border); color: var(--tag-vein-renal); }
+.filter-chip[id^="chip-waveform-normal"] { background-color: var(--tag-waveform-normal-filter-bg); border-color: var(--tag-waveform-normal-filter-border); color: var(--tag-waveform-normal); }
+.filter-chip[id^="chip-waveform-mild"] { background-color: var(--tag-waveform-mild-filter-bg); border-color: var(--tag-waveform-mild-filter-border); color: var(--tag-waveform-mild); }
+.filter-chip[id^="chip-waveform-severe"] { background-color: var(--tag-waveform-severe-filter-bg); border-color: var(--tag-waveform-severe-filter-border); color: var(--tag-waveform-severe); }
+.filter-chip[id^="chip-qa-yes"] { background-color: var(--tag-qa-yes-filter-bg); border-color: var(--tag-qa-yes-filter-border); color: var(--tag-qa-yes); }
+.filter-chip[id^="chip-qa-no"] { background-color: var(--tag-qa-no-filter-bg); border-color: var(--tag-qa-no-filter-border); color: var(--tag-qa-no); }
+.filter-chip[id^="chip-subtype-"] { background-color: var(--tag-subtype-filter-bg); border-color: var(--tag-subtype-filter-border); color: var(--tag-subtype); }
+
+
+/*----------------------------------------------
+  FANCYBOX CUSTOMIZATION
+-----------------------------------------------*/
+.fancybox__container {
+    --fancybox-bg: rgba(24, 24, 27, 0.97);
+    /* Removed z-index: 9999 !important; Rely on Fancybox default */
+}
+
+.fancybox__slide {
+    padding: 1.5rem;
+}
+
+.fancybox__caption {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    line-height: 1.6;
+    color: #eee; /* Lighter default text */
+}
+
+.fancybox__caption h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.3em;
+    color: #fff;
+}
+
+.fancybox__caption p {
+    margin: 0.5rem 0;
+    opacity: 0.9;
+}
+
+.fancybox__caption strong {
+    font-weight: 600;
+    color: #fff;
+}
+
+/*----------------------------------------------
+  GALLERY SUBMISSION FORM
+-----------------------------------------------*/
+.form-container {
+    margin-top: 4rem; /* Increased top margin */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    background-color: #f8f9fa; /* Light background for the form area */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.form-container header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.form-container header h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5rem;
+}
+.form-container header p {
+    font-size: 1em;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+.form-container form {
+    display: block;
+    width: 100%;
+}
+
+.form-container .fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-container .field {
+    position: relative;
+    width: 100%;
+}
+
+.form-container .field.half {
+    flex: 1;
+    min-width: calc(50% - 0.75rem);
+}
+
+.form-container .field label {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.form-container .field input[type="text"],
+.form-container .field input[type="email"],
+.form-container .field textarea,
+.form-container .field select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+.form-container .field input:focus,
+.form-container .field textarea:focus,
+.form-container .field select:focus {
+    border-color: var(--spinner-color);
+    box-shadow: 0 0 0 2px rgba(67, 195, 172, 0.2);
+    outline: none;
+}
+
+
+.form-container .field textarea {
+    resize: vertical;
+    min-height: 120px; /* Slightly reduced min height */
+}
+
+.form-container .actions {
+    text-align: center;
+    margin-top: 2rem; /* Increased spacing */
+}
+
+.form-container input[type="submit"] {
+    background-color: var(--spinner-color);
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem; /* Adjusted padding */
+    font-size: 1.1em;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #35a18d; /* Darker shade */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Upload Area */
+.upload-area {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background-color: #f0f4f8; /* Lighter blue-grey */
+}
+
+.upload-area:hover, .upload-area.active {
+    border-color: var(--spinner-color);
+    background-color: #e6f7f4; /* Lighter theme color */
+}
+
+.upload-icon {
+    font-size: 2.5rem; /* Larger icon */
+    color: var(--spinner-color);
+    margin-bottom: 1rem;
+}
+
+.upload-text {
+    margin: 0;
+    color: #666;
+    font-size: 0.95em;
+}
+
+.file-input { /* Hidden file input */
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Image Preview */
+.image-preview-container {
+    display: none; /* Hidden by default */
+    position: relative;
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 300px; /* Limit preview size */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-preview {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #eee; /* Light border */
+}
+
+.image-preview-controls {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1; /* Ensure controls are above image */
+}
+
+.image-preview-delete {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.6); /* Slightly darker background */
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    line-height: 1; /* Ensure 'x' is centered */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: none;
+    padding: 0;
+}
+
+.image-preview-delete:hover {
+    background-color: rgba(220, 53, 69, 0.8); /* Red on hover */
+}
+
+/* Form Messages */
+.success-message, .error-message {
+    display: none; /* Hidden by default */
+    padding: 1rem;
+    margin-top: 1.5rem; /* Increased spacing */
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.95em;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/*----------------------------------------------
+  RESPONSIVE STYLES
+-----------------------------------------------*/
+@media screen and (max-width: 992px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 25px;
+    }
+
+    /* Adjust filter layout */
+     .filter-panel[data-panel="all"] {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filter-categories {
+        padding: 1rem;
+    }
+
+     .filter-panel[data-panel="all"] {
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        gap: 15px 20px;
+    }
+
+    .filter-tabs {
+        margin-bottom: 15px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .form-container .field.half {
+        min-width: 100%;
+        flex-basis: 100%;
+    }
+
+    /* Reduce tag size slightly on mobile */
+    :root {
+        --tag-size: 1.9em;
+    }
+    .gallery-info .tags {
+        gap: 5px; /* Slightly smaller gap */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .title-container h1 {
+        font-size: 2em;
+    }
+    .title-container p {
+        font-size: 1em;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    .logo-container .logo {
+        max-width: 150px;
+    }
+
+    .form-container {
+        padding: 1rem;
+    }
+
+    /* Filter adjustments for very small screens */
+    .filter-tabs {
+        font-size: 0.9rem; /* Smaller tab text */
+    }
+    .filter-tag {
+        padding: 5px 10px; /* Smaller padding */
+        font-size: 12px;
+    }
+    .filter-panel[data-panel="all"] {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 15px;
+    }
+    .filter-title {
+        margin-bottom: 8px;
+    }
+
+    /* Further reduce tag size */
+    :root {
+        --tag-size: 1.7em;
+    }
+    .gallery-info .tags {
+        gap: 4px;
+    }
+} 

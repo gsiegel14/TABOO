@@ -1,0 +1,85 @@
+/* 
+ * Image Gallery Dark Mode Styles
+ * Dark mode specific styles and color schemes
+ */
+
+/* Dark Mode Colors */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Base Colors */
+        --background-color: var(--dark-bg-color);
+        --text-color: var(--dark-text-color);
+        --border-color: var(--dark-border-color);
+        --shadow-color: var(--dark-shadow-color);
+        
+        /* Tag Colors */
+        --tag-bg-color: var(--dark-tag-bg);
+        --tag-text-color: var(--dark-tag-text);
+        --tag-border-color: var(--dark-tag-border);
+        --tag-box-shadow: var(--dark-tag-shadow);
+        
+        /* Tag States */
+        --tag-hover-bg-color: var(--dark-tag-hover-bg);
+        --tag-hover-text-color: var(--dark-tag-hover-text);
+        --tag-hover-border-color: var(--dark-tag-hover-border);
+        
+        --tag-active-bg-color: var(--dark-tag-active-bg);
+        --tag-active-text-color: var(--dark-tag-active-text);
+        --tag-active-border-color: var(--dark-tag-active-border);
+        
+        /* Form Colors */
+        --input-bg-color: var(--dark-input-bg);
+        --input-text-color: var(--dark-input-text);
+        --input-border-color: var(--dark-input-border);
+        
+        /* Modal Colors */
+        --modal-bg-color: var(--dark-modal-bg);
+        --modal-text-color: var(--dark-modal-text);
+        --modal-border-color: var(--dark-modal-border);
+        
+        /* Overlay Colors */
+        --overlay-color: var(--dark-overlay-color);
+    }
+    
+    /* Dark Mode Specific Adjustments */
+    .gallery-item {
+        background-color: var(--dark-bg-color);
+        box-shadow: 0 2px 8px var(--dark-shadow-color);
+    }
+    
+    .filter-container {
+        background-color: var(--dark-bg-color-alt);
+        box-shadow: 0 4px 15px var(--dark-shadow-color);
+    }
+    
+    .modal-container {
+        background-color: var(--dark-bg-color);
+        box-shadow: 0 4px 20px var(--dark-shadow-color);
+    }
+    
+    /* Dark Mode Image Adjustments */
+    .gallery-item img {
+        filter: brightness(0.9);
+    }
+    
+    /* Dark Mode Form Adjustments */
+    .search-input,
+    .filter-select {
+        background-color: var(--dark-input-bg);
+        color: var(--dark-input-text);
+        border-color: var(--dark-input-border);
+    }
+    
+    /* Dark Mode Button Adjustments */
+    .modal-button,
+    .modal-nav {
+        background-color: var(--dark-bg-color);
+        color: var(--dark-text-color);
+        box-shadow: 0 2px 8px var(--dark-shadow-color);
+    }
+    
+    .modal-button:hover,
+    .modal-nav:hover {
+        background-color: var(--dark-bg-color-alt);
+    }
+} 
