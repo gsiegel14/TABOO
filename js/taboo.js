@@ -182,15 +182,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Handle index wrapping
-        if (index < 0) {
-            index = tabooCards.length - 1;
-        } else if (index >= tabooCards.length) {
-            index = 0;
-        }
-
+        // Ensure index is within bounds
+        index = Math.max(0, Math.min(index, tabooCards.length - 1));
+        
         // Update current index
         currentCardIndex = index;
+        console.log('Displaying card at index:', currentCardIndex);
 
         const card = tabooCards[currentCardIndex];
         console.log('Displaying card:', currentCardIndex);
@@ -366,15 +363,32 @@ document.addEventListener('DOMContentLoaded', function() {
         prevCardBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            displayCard(currentCardIndex - 1);
+            let newIndex = currentCardIndex - 1;
+            if (newIndex < 0) {
+                newIndex = tabooCards.length - 1;
+            }
+            displayCard(newIndex);
             playSound('flip');
+            console.log('Previous button clicked, new index:', newIndex);
         });
         
         nextCardBtn.addEventListener('click', function(e) {
-            e.preventDefault(); 
+            e.preventDefault();
             e.stopPropagation();
-            displayCard(currentCardIndex + 1);
+            let newIndex = currentCardIndex + 1;
+            if (newIndex >= tabooCards.length) {
+                newIndex = 0;
+            }
+            displayCard(newIndex);
             playSound('flip');
+            console.log('Next button clicked, new index:', newIndex);
+        });
+
+        // Add button hover effects
+        [prevCardBtn, nextCardBtn].forEach(btn => {
+            btn.style.cursor = 'pointer';
+            btn.addEventListener('mouseenter', () => btn.style.opacity = '0.8');
+            btn.addEventListener('mouseleave', () => btn.style.opacity = '1');
         });
 
         // Keyboard controls
