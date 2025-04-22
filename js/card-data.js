@@ -10,6 +10,7 @@ const tabooCards = [
     "targetWord": "Morison's Pouch View",
     "target_img": "images/cards/local/1_target_MorisonNoText.png",
     "probe_img": "images/cards/local/1_probe_fast_ruq_probe.jpg",
+    "local_probe_img": "images/cards/local/1_probe_fast_ruq_probe.jpg",
     "tabooWords": [
       "FAST",
       "Morison's",
