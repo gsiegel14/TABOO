@@ -597,18 +597,18 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: rgba(110, 82, 161, 0.9);
+    background-color: #6e52a1;
     color: white;
     font-size: 1.1em;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 12px;
     padding: 10px 18px;
     border-radius: 25px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     transition: all 0.2s ease;
     cursor: pointer;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: none;
 }
 
 .card-flip-instruction:hover {
