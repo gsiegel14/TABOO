@@ -51,11 +51,19 @@ describe('Card Navigation Tests', () => {
       }
     ];
 
-    // Mock functions
+    // Mock functions and image loading
     window.playSound = jest.fn();
     window.ImageProxy = {
-      loadImage: jest.fn()
+      loadImage: jest.fn((img, src, fallback, onSuccess) => {
+        // Simulate successful image load
+        setTimeout(() => onSuccess(), 0);
+        return true;
+      })
     };
+    
+    // Mock image elements
+    document.getElementById('card-target-img').src = '';
+    document.getElementById('card-probe-img').src = '';
   });
 
   test('Next button advances to next card', () => {

@@ -7,7 +7,15 @@ global.window = {
   location: {
     search: ''
   },
-  tabooCards: require('../card-data.js').tabooCards
+  tabooCards: require('../card-data.js').tabooCards,
+  ImageProxy: {
+    loadImage: jest.fn((img, src, fallback, onSuccess) => {
+      // Always succeed for test purposes
+      onSuccess();
+      return true;
+    })
+  },
+  playSound: jest.fn()
 };
 
 global.document = {
