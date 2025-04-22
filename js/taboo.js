@@ -110,29 +110,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize Fancybox
         initFancybox();
 
-        // Ensure card data is properly loaded
+        // Wait for tabooCards to be available
         if (typeof window.tabooCards === 'undefined' || !Array.isArray(window.tabooCards)) {
             console.error('Card data not loaded properly');
-            window.tabooCards = [];
-            return;
+            // Create a placeholder card if data is missing
+            window.tabooCards = [{
+                id: 1,
+                targetWord: "Loading...",
+                tabooWords: ["Please refresh", "if this persists"],
+                prompt: "Loading game data..."
+            }];
         }
 
         // Initialize current index
         window.currentCardIndex = 0;
-        
+
+        // Set up event listeners after data is loaded
+        setupEventListeners();
+
         // Load the first card
-        if (window.tabooCards.length > 0) {
-            displayCard(0);
-        }
+        displayCard(0);
+
 
         // Shuffle the cards
         shuffleCards();
 
         // Display the first card
-        displayCard(currentCardIndex);
-
-        // Set up event listeners
-        setupEventListeners();
+        //displayCard(currentCardIndex); //Already called above.
     }
 
     // Initialize Fancybox with custom options
@@ -193,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Ensure index is valid
         const safeIndex = ((index % window.tabooCards.length) + window.tabooCards.length) % window.tabooCards.length;
         window.currentCardIndex = safeIndex;
-        
+
         const card = window.tabooCards[safeIndex];
         if (!card) {
             console.error('Invalid card at index:', safeIndex);
@@ -373,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Card navigation
         function handlePrevCard() {
             if (!window.tabooCards || !window.tabooCards.length) return;
-            
+
             let newIndex = window.currentCardIndex - 1;
             if (newIndex < 0) {
                 newIndex = window.tabooCards.length - 1;
@@ -386,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function handleNextCard() {
             if (!window.tabooCards || !window.tabooCards.length) return;
-            
+
             let newIndex = window.currentCardIndex + 1;
             if (newIndex >= window.tabooCards.length) {
                 newIndex = 0;
@@ -400,11 +404,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remove existing listeners
         prevCardBtn.replaceWith(prevCardBtn.cloneNode(true));
         nextCardBtn.replaceWith(nextCardBtn.cloneNode(true));
-        
+
         // Get fresh references and add new listeners
         const freshPrevBtn = document.getElementById('prev-card');
         const freshNextBtn = document.getElementById('next-card');
-        
+
         freshPrevBtn.addEventListener('click', handlePrevCard);
         freshNextBtn.addEventListener('click', handleNextCard);
 
