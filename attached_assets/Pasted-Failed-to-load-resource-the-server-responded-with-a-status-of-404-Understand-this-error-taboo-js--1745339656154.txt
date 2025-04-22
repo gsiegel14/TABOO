@@ -1,0 +1,115 @@
+Failed to load resource: the server responded with a status of 404 ()Understand this error
+taboo.js:138 Fancybox available: true
+taboo.js:166 Fancybox initialized successfully with zoom enabled
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+(index):302 Game initialized
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+taboo-thevexusatlas.replit.app/:1 <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes">Understand this warning
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296Understand this error
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_target_MorisonNoText.png
+image-proxy.js:295 [ImageProxy] Attempt 1/1: images/cards/local/1_probe_fast_ruq_probe.jpg
+image-proxy.js:305 [ImageProxy] Failed to load: images/cards/local/1_probe_fast_ruq_probe.jpg
+imgElement.onerror @ image-proxy.js:305Understand this warning
+image-proxy.js:260 Failed to load image after 1 attempts. Hiding image.
+tryNextUrl @ image-proxy.js:260
+(anonymous) @ image-proxy.js:308
+setTimeout
+imgElement.onerror @ image-proxy.js:307Understand this error
+taboo.js:296 Failed to load probe image after all attempts
+(anonymous) @ taboo.js:296
+tryNextUrl @ image-proxy.js:271
+(anonymous) @ image-proxy.js:308
+setTimeout
+imgElement.onerror @ image-proxy.js:307Understand this error
+image-proxy.js:299 [ImageProxy] Successfully loaded: images/cards/local/1_target_MorisonNoText.png
+5taboo.js:71 Audio play prevented: NotSupportedError: The element has no supported sources.
+taboo.js:82 Audio unlocked successfully
