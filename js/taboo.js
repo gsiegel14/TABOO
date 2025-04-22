@@ -176,14 +176,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Display a card
     function displayCard(index) {
-        // Ensure index is within bounds
+        // Ensure index is within bounds and update currentCardIndex
         if (index < 0) {
-            currentCardIndex = tabooCards.length - 1;
+            index = tabooCards.length - 1;
         } else if (index >= tabooCards.length) {
-            currentCardIndex = 0;
-        } else {
-            currentCardIndex = index;
+            index = 0;
         }
+        currentCardIndex = index;
 
         const card = tabooCards[currentCardIndex];
 
@@ -355,8 +354,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Card navigation
-        prevCardBtn.addEventListener('click', () => displayCard(currentCardIndex - 1));
-        nextCardBtn.addEventListener('click', () => displayCard(currentCardIndex + 1));
+        prevCardBtn.addEventListener('click', () => {
+            displayCard(currentCardIndex - 1);
+            playSound('flip');
+        });
+        nextCardBtn.addEventListener('click', () => {
+            displayCard(currentCardIndex + 1);
+            playSound('flip');
+        });
 
         // Keyboard controls
         document.addEventListener('keydown', handleKeyPress);
