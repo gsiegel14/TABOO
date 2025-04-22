@@ -1,0 +1,187 @@
+/* 
+ * Image Gallery Modal Styles
+ * Modal and overlay styles for image viewing
+ */
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--overlay-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Container */
+.modal-container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+    transform: scale(1);
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+/* Modal Image */
+.modal-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* Modal Info */
+.modal-info {
+    padding: 1.5em;
+    background-color: var(--background-color-alt);
+}
+
+.modal-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    color: var(--text-color-dark);
+}
+
+.modal-description {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+/* Modal Tags */
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+/* Modal Controls */
+.modal-controls {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    display: flex;
+    gap: 0.5em;
+    z-index: 1;
+}
+
+.modal-button {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.modal-button:hover {
+    background-color: var(--background-color-alt);
+    transform: translateY(-2px);
+}
+
+.modal-button:active {
+    transform: translateY(0);
+}
+
+/* Modal Navigation */
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3em;
+    height: 3em;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.modal-nav:hover {
+    background-color: var(--background-color-alt);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.modal-nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.modal-nav.prev {
+    left: 1em;
+}
+
+.modal-nav.next {
+    right: 1em;
+}
+
+/* Modal Animations */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes modalFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+.modal-container {
+    animation: modalFadeIn 0.3s ease forwards;
+}
+
+.modal-container.closing {
+    animation: modalFadeOut 0.3s ease forwards;
+} 

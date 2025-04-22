@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Taboo Game</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="html5up-phantom/assets/css/main.css" />
+    <link rel="stylesheet" href="css/taboo.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    
+    <!-- Polyfills for IE11 and older browsers (REMOVED) -->
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.forEach%2CPromise%2CObject.values%2CArray.prototype.includes"></script> -->
+    
+    <!-- Fancybox CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    
+    <noscript><link rel="stylesheet" href="html5up-phantom/assets/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <style>
+        .top-logos {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+        .logo-left, .logo-right {
+            max-height: 120px;
+            width: auto;
+        }
+        @media screen and (max-width: 736px) {
+            .logo-left, .logo-right {
+                max-height: 80px;
+            }
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <!-- Top Logos -->
+    <div class="top-logos">
+        <img src="game_icons_taboo_840x840.webp" alt="Taboo Logo" class="logo-left">
+        <img src="DEMSono+logo+final copy.png" alt="DEMSono Logo" class="logo-right">
+    </div>
+
+    <div id="wrapper">
+        <header id="header">
+            <div class="inner">
+                <!-- Removing the Taboo Logo and Text from left side -->
+                <!-- 
+                <a href="index.html" class="logo">
+                    <span class="symbol"><img src="images/taboo-logo.svg" alt="Taboo Logo" /></span>
+                    <span class="title">Taboo Game</span>
+                </a>
+                -->
+                
+                <!-- Removed the navigation with hamburger icon -->
+                <!-- 
+                <nav>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                    </ul>
+                </nav>
+                -->
+            </div>
+        </header>
+
+        <nav id="menu" style="display: none;">
+            <!-- Hidden since we removed the hamburger icon -->
+            <div class="inner">
+                <div class="logo-container">
+                    <img src="images/taboo-logo.svg" alt="Taboo Game Logo" class="sidebar-logo">
+                </div>
+                <h2>Menu</h2>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#how-to-play">How to Play</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <a href="#" class="close-x" aria-label="Close Menu"></a>
+            </div>
+        </nav>
+
+        <div id="main">
+            <div class="inner">
+                <div class="game-logo">
+                    <img src="images/taboo-logo.svg" alt="Taboo Game Logo">
+                    <h1>Taboo Game</h1>
+                    <p>A fun way to test your knowledge! Describe the target word without using any of the taboo words.</p>
+                </div>
+                
+                <div class="game-controls">
+                    <div class="timer-section">
+                        <div class="timer" id="timer">60</div>
+                        <div class="timer-controls">
+                            <button id="start-timer" class="button primary small"><i class="fas fa-play"></i></button>
+                            <button id="pause-timer" class="button primary small"><i class="fas fa-pause"></i></button>
+                            <button id="reset-timer" class="button primary small"><i class="fas fa-redo"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="score-section">
+                        <div class="team-score">
+                            <h3>Team 1</h3>
+                            <div class="score" id="team1-score">0</div>
+                            <div class="score-controls">
+                                <button id="team1-plus" class="button small success"><i class="fas fa-plus"></i></button>
+                                <button id="team1-minus" class="button small danger"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="team-score">
+                            <h3>Team 2</h3>
+                            <div class="score" id="team2-score">0</div>
+                            <div class="score-controls">
+                                <button id="team2-plus" class="button small success"><i class="fas fa-plus"></i></button>
+                                <button id="team2-minus" class="button small danger"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="taboo-card-container">
+                    <div class="taboo-card" id="taboo-card">
+                        <div class="taboo-card-inner">
+                            <!-- FRONT SIDE -->
+                            <div class="taboo-card-front">
+                                <div class="card-header">
+                                    <h2 class="target-word" id="target-word">Loading...</h2>
+                                </div>
+                                <div class="card-body">
+                                    <p id="card-prompt" class="card-prompt" style="font-weight:bold; margin-bottom:1em;"></p>
+                                    <div class="card-images">
+                                        <div class="image-container">
+                                            <h4 class="image-label">Target View</h4>
+                                            <div class="image-wrapper">
+                                                <div class="image-loading-indicator">Loading...</div>
+                                                <img id="card-target-img" src="images/cards/placeholder.svg" alt="Target Ultrasound" style="border-radius:8px;">
+                                            </div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h4 class="image-label">Probe Position</h4>
+                                            <div class="image-wrapper">
+                                                <div class="image-loading-indicator">Loading...</div>
+                                                <img id="card-probe-img" src="images/cards/placeholder.svg" alt="Probe Position" style="border-radius:8px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- BACK SIDE -->
+                            <div class="taboo-card-back">
+                                <div class="card-header back-header">
+                                    <h2 class="target-word" id="back-target-word"></h2>
+                                </div>
+                                <div class="card-body">
+                                    <h4 style="margin-top:0;">Taboo Words</h4>
+                                    <ul class="taboo-words" id="back-taboo-words"></ul>
+                                </div>
+                            </div>
+                        </div> <!-- end .taboo-card-inner -->
+
+                        <div class="card-flip-instruction">
+                            <i class="fas fa-sync-alt"></i> Click card to flip
+                        </div>
+                    </div>
+                    
+                    <div class="card-navigation">
+                        <button id="prev-card" class="button primary"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button id="next-card" class="button primary">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="game-instructions" id="how-to-play">
+                    <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+                    <ol>
+                        <li><strong>Setup:</strong> Divide players into two teams.</li>
+                        <li><strong>Gameplay:</strong> One player from a team tries to get their teammates to say the target word at the top of the card.</li>
+                        <li><strong>Challenge:</strong> The player CANNOT use any of the taboo words listed on the card.</li>
+                        <li><strong>Scoring:</strong> Teams earn one point for each correctly guessed word. Use the + buttons to track points.</li>
+                        <li><strong>Timer:</strong> Each round lasts 60 seconds. Use the timer controls to start/pause.</li>
+                        <li><strong>Navigation:</strong> Use the Previous/Next buttons or left/right arrow keys to move between cards.</li>
+                        <li><strong>Tips:</strong> Space bar toggles the timer. Try to use synonyms, descriptions, or related concepts.</li>
+                    </ol>
+                </div>
+                
+                <div class="game-resources" id="resources">
+                    <h3><i class="fas fa-file-pdf"></i> Printable Cards</h3>
+                    <p>Want physical cards for your training sessions? Generate and download printable ultrasound Taboo cards!</p>
+                    <div class="download-options">
+                        <a href="/generate-cards" class="button primary" id="generate-cards"><i class="fas fa-file-download"></i> Generate PDF Cards</a>
+                        <p class="download-note">This will create a PDF with illustrated ultrasound cards that you can print for in-person training.</p>
+                    </div>
+                    <div class="instructions">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Python 3.6+ installed on your computer</li>
+                            <li>Required libraries: reportlab, requests (install with <code>pip install reportlab requests</code>)</li>
+                            <li>Internet connection to download ultrasound images</li>
+                        </ul>
+                        <h4>Tips for printing:</h4>
+                        <ul>
+                            <li>Print double-sided with "flip on short edge" setting</li>
+                            <li>Use cardstock (110 lb) for durability</li>
+                            <li>Consider laminating for repeated use</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Debug Panel (hidden by default) -->
+                <div class="debug-panel hidden" id="debug-panel">
+                    <h3><i class="fas fa-bug"></i> Debug Panel</h3>
+                    <div class="debug-controls">
+                        <button id="toggle-debug" class="button small">Show Debug Info</button>
+                        <button id="test-images" class="button small">Test Image Loading</button>
+                        <button id="clear-logs" class="button small danger">Clear Logs</button>
+                    </div>
+                    <div class="debug-content hidden">
+                        <h4>Image Loading Status</h4>
+                        <div id="image-status" class="debug-section"></div>
+                        
+                        <h4>Console Logs</h4>
+                        <pre id="debug-log" class="debug-console"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="inner">
+                <section id="about">
+                    <h2>About the Game</h2>
+                    <p>
+                        This Taboo game was designed to help people learn terminology in a fun, interactive way. The game features terms related to various domains and knowledge areas.
+                    </p>
+                </section>
+                <section>
+                    <h2>Credits</h2>
+                    <div class="sponsor-logo">
+                        <img src="DEMSono+logo+final copy.png" alt="DEMSono Logo" style="max-width: 200px; margin-bottom: 20px;">
+                    </div>
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+                        <li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                </section>
+                <ul class="copyright">
+                    <li>&copy; Taboo Game. All rights reserved</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- Core JavaScript Files -->
+    <script src="html5up-phantom/assets/js/browser.js"></script>
+    <script src="html5up-phantom/assets/js/breakpoints.js"></script>
+    <script src="html5up-phantom/assets/js/util.js"></script>
+    <script src="html5up-phantom/assets/js/performance-utils.js"></script>
+    
+    <!-- Component JavaScript Files -->
+    <script src="html5up-phantom/assets/js/menu-toggle.js"></script>
+    
+    <!-- Game JS - Note: Order matters for dependency resolution -->
+    <script src="js/card-data.js"></script>
+    <script src="js/image-proxy.js"></script>
+    <script src="js/taboo.js"></script>
+    
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+    <!-- Error handling -->
+    <script>
+        window.addEventListener('error', function(e) {
+            console.error('Game error:', e.message);
+            // Display user-friendly error
+            if (document.getElementById('taboo-card')) {
+                document.getElementById('target-word').textContent = 'Oops! Something went wrong.';
+                document.getElementById('back-taboo-words').innerHTML = '<li>Please refresh the page to try again</li><li>If the problem persists, check your browser console</li>';
+            }
+        });
+        
+        // Initialize game when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Game initialized');
+        });
+    </script>
+</body>
+</html> 

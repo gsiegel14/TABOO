@@ -1,0 +1,882 @@
+[
+  {
+    "cardId": 11,
+    "title": "Ultrasound of grade 2 fatty right liver lobe.jpg",
+    "score": 10
+  },
+  {
+    "cardId": 11,
+    "title": "Parasite150100-fig2 Ultrasound-guided core-needle biopsy of hepatic alveolar echinococcosis.png",
+    "score": 10
+  },
+  {
+    "cardId": 11,
+    "title": "Absence of the portal system in a first trimester human.jpg",
+    "score": 5
+  },
+  {
+    "cardId": 11,
+    "title": "Portal venous system human.jpg",
+    "score": 5
+  },
+  {
+    "cardId": 11,
+    "title": "Embryological development of the human venous system.png",
+    "score": 0
+  },
+  {
+    "cardId": 11,
+    "title": "Histological appearance of the FT liver with normal PVS human.jpg",
+    "score": 5
+  },
+  {
+    "cardId": 11,
+    "title": "Anatomic and histopathological aspects of FT organs human.jpg",
+    "score": 0
+  },
+  {
+    "cardId": 11,
+    "title": "Transverse section at the level of the abdomen. human (01).jpg",
+    "score": 0
+  },
+  {
+    "cardId": 11,
+    "title": "Ultrasound of grade 2 fatty right liver lobe.jpg",
+    "score": 10
+  },
+  {
+    "cardId": 11,
+    "title": "Parasite150100-fig2 Ultrasound-guided core-needle biopsy of hepatic alveolar echinococcosis.png",
+    "score": 10
+  },
+  {
+    "cardId": 11,
+    "title": "Absence of the portal system in a first trimester human.jpg",
+    "score": 5
+  },
+  {
+    "cardId": 11,
+    "title": "Portal venous system human.jpg",
+    "score": 5
+  },
+  {
+    "cardId": 11,
+    "title": "Embryological development of the human venous system.png",
+    "score": 0
+  },
+  {
+    "cardId": 11,
+    "title": "Histological appearance of the FT liver with normal PVS human.jpg",
+    "score": 5
+  },
+  {
+    "cardId": 11,
+    "title": "Anatomic and histopathological aspects of FT organs human.jpg",
+    "score": 0
+  },
+  {
+    "cardId": 11,
+    "title": "Transverse section at the level of the abdomen. human (01).jpg",
+    "score": 0
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 12.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 13.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 16.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 18.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 11.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 17.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 10.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 15.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 25.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 04.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 06.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 21.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 48.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 05.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 22.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 14.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 09.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 20.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 08.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 26.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 19.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 23.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 07.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 03.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 02.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 24.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 01.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 47.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 50.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 55.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 54.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 29.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 44.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 49.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 30.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 40.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 41.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 32.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 35.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 52.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 12.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 13.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 16.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 18.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 11.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 17.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 10.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 15.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 25.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 04.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 06.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 21.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 48.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 05.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 09.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 20.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 22.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 08.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 26.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 14.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 19.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 23.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 03.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 07.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 02.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 01.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 24.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 47.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 50.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 55.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 54.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 32.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 44.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 49.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 40.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 30.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 29.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 41.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 52.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 19,
+    "title": "Abdominal Ultrasound Full Exam 36.jpg",
+    "score": 3.75
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110323142228 1424030.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110330120543 1207550.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110322150910 1511320.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110304142324 1439030.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110314093023 0931110.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110316083054 0832120.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110321144006 1442530.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110314142256 1423520.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110328103137 1033140.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110317140714 1409400.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110330120543 1210210.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110318135406 1356250.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110330104121 1045030.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110317092723 0929510.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110329095615 0958460.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110329095615 0959530.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110318121147 1212300.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110303093942 0943240.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110321091033 0912300.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110302104613 1053070.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110328103137 1033250.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110303101940 1022330.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110323103124 1035080.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110321094149 0946200.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110321092456 0928370.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110330120543 1209540.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110329141117 1412080.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110301095907 1001590.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110218111651 1117510.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110225100730 1008470.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110216154620 1547120.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110301095907 1001591.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110222134818 1350400.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "SD-Sono001-Nummern.jpg",
+    "score": 0
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110217093234 0936030.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110214104834 1051130.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110214145758 1458530.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110218111651 1117511.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 0126092435 0926040.png",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 0117135054 1352170.png",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110322150910 1511320.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110304142324 1439030.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110323142228 1424030.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110330120543 1207550.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110314093023 0931110.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110316083054 0832120.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110314142256 1423520.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110321144006 1442530.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110321091033 0912300.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110318135406 1356250.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110330104121 1045030.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110328103137 1033140.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110317140714 1409400.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110330120543 1210210.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110317092723 0929510.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110329095615 0958460.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110329095615 0959530.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110323103124 1035080.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110318121147 1212300.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110303093942 0943240.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110302104613 1053070.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110328103137 1033250.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110303101940 1022330.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110321094149 0946200.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110321092456 0928370.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110330120543 1209540.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Thyroid ultrasound 110329141117 1412080.jpg",
+    "score": 15
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110301095907 1001590.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110218111651 1117510.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110216154620 1547120.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110225100730 1008470.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110301095907 1001591.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110222134818 1350400.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "SD-Sono001-Nummern.jpg",
+    "score": 0
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110217093234 0936030.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110214104834 1051130.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110214145758 1458530.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 110218111651 1117511.jpg",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 0105134308 1344040.png",
+    "score": 7.5
+  },
+  {
+    "cardId": 24,
+    "title": "Ultrasound Scan ND 0126092435 0926040.png",
+    "score": 7.5
+  }
+]

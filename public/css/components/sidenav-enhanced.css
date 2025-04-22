@@ -1,0 +1,169 @@
+/* Enhanced Side Navigation Styles */
+
+/* Larger navigation panel */
+.side-nav {
+    position: fixed;
+    top: 30%;
+    left: -250px; /* Start hidden further left */
+    width: 250px; /* Wider navigation panel */
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.95); /* More opaque white */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 30px 0; /* More padding */
+    border-radius: 0 12px 12px 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(235, 235, 235, 0.8);
+    max-height: 70vh; /* Maximum height */
+    overflow-y: auto; /* Scrollable if needed */
+}
+
+/* Showing nav when not collapsed */
+.side-nav:not(.collapsed) {
+    left: 0;
+    transform: translateX(0);
+}
+
+/* Enhanced toggle button */
+#sideNavToggle {
+    position: fixed;
+    top: 30%;
+    left: 0;
+    width: 50px; /* Larger toggle button */
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(235, 235, 235, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+/* Larger, cleaner arrow */
+#sideNavToggle i {
+    font-size: 22px; /* Larger icon */
+    color: #1E88E5; /* Blue color for better visibility */
+    transition: all 0.3s ease;
+}
+
+#sideNavToggle:hover {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#sideNavToggle:hover i {
+    transform: scale(1.2);
+}
+
+/* Enhanced side nav items */
+.side-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-nav-item {
+    margin: 8px 0;
+    position: relative;
+}
+
+.side-nav-link {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.side-nav-link:hover,
+.side-nav-link:focus {
+    background-color: rgba(240, 240, 245, 0.9);
+    color: #1E88E5;
+    border-left: 3px solid #1E88E5;
+}
+
+.side-nav-link.active {
+    background-color: rgba(230, 240, 255, 0.7);
+    color: #1E88E5;
+    border-left: 3px solid #1E88E5;
+    font-weight: 600;
+}
+
+/* Enhanced sub-navigation */
+.sub-nav {
+    display: none;
+    background-color: rgba(250, 250, 255, 0.9);
+    padding: 5px 0;
+    margin-left: 15px;
+    border-left: 1px solid rgba(200, 210, 230, 0.5);
+}
+
+.sub-nav.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.sub-nav-item {
+    margin: 0;
+}
+
+.sub-nav-link {
+    display: block;
+    padding: 10px 15px;
+    color: #444;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.sub-nav-link:hover,
+.sub-nav-link:focus {
+    background-color: rgba(235, 240, 250, 0.7);
+    color: #1E88E5;
+}
+
+.sub-nav-link.active {
+    background-color: rgba(225, 235, 250, 0.7);
+    color: #1E88E5;
+    font-weight: 500;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .side-nav {
+        top: 20%;
+        width: 200px;
+        padding: 20px 0;
+    }
+    
+    #sideNavToggle {
+        top: 20%;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .side-nav-link {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .sub-nav-link {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+} 

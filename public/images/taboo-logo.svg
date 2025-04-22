@@ -1,0 +1,15 @@
+<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background rectangle -->
+  <rect width="200" height="80" rx="10" ry="10" fill="#6e52a1" />
+  
+  <!-- "TABOO" text -->
+  <text x="100" y="50" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="#ffffff">TABOO</text>
+  
+  <!-- Decorative elements -->
+  <line x1="30" y1="60" x2="170" y2="60" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,5" />
+  
+  <!-- Crossed out symbol -->
+  <circle cx="170" cy="25" r="15" fill="#ff4136" stroke="#ffffff" stroke-width="2" />
+  <line x1="160" y1="15" x2="180" y2="35" stroke="#ffffff" stroke-width="3" />
+  <line x1="160" y1="35" x2="180" y2="15" stroke="#ffffff" stroke-width="3" />
+</svg> 

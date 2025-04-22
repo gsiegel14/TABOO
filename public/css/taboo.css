@@ -1,0 +1,800 @@
+/* Taboo Game Specific Styles */
+
+/* Game Controls */
+.game-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2em 0;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+@media screen and (max-width: 768px) {
+    .game-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Timer Section */
+.timer-section {
+    text-align: center;
+    min-width: 200px;
+}
+
+.timer {
+    font-size: 3em;
+    font-weight: bold;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.timer.time-up {
+    background-color: #f44336;
+    color: white;
+    animation: pulse 0.5s ease-in-out;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+/* Score Section */
+.score-section {
+    display: flex;
+    gap: 2em;
+}
+
+.team-score {
+    text-align: center;
+    padding: 1em;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+}
+
+.team-score h3 {
+    margin-bottom: 0.5em;
+}
+
+.score {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    transition: transform 0.2s ease;
+}
+
+.score.score-changed {
+    transform: scale(1.2);
+}
+
+.score-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.success {
+    background-color: #4CAF50 !important;
+}
+
+.danger {
+    background-color: #f44336 !important;
+}
+
+/* Taboo Card */
+.taboo-card-container {
+    margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.taboo-card {
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    min-height: 900px;
+    perspective: 1500px;
+    margin-bottom: 2em;
+    cursor: pointer;
+    background-color: #f5f5f5; /* Card background color */
+}
+
+.taboo-card.animating {
+    animation: cardIn 0.3s ease-out;
+}
+
+.card-header {
+    background-color: #6e52a1; /* Phantom purple */
+    color: #ffffff;
+    padding: 1.8em 1em; /* Added horizontal padding */
+    text-align: center;
+    position: relative;
+    min-height: 110px; /* Added min-height to ensure consistent card size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-header::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #6e52a1;
+}
+
+.target-word {
+    margin: 0;
+    font-size: 2.8em; /* Slightly reduced from 3em to balance size and fit */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    padding: 0 0.5em;
+    word-wrap: break-word; /* Allow words to break */
+    hyphens: auto; /* Enable hyphenation */
+}
+
+/* Add class for long titles */
+.target-word.long-title {
+    font-size: 2.4em; /* Smaller font for very long titles */
+}
+
+.card-body {
+    padding: 0.5em 0.8em;
+    background-color: rgba(249, 249, 249, 0.9);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.card-images {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 2em;
+    border-radius: 12px;
+    min-height: 70vh;
+}
+
+.image-container {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.image-label {
+    margin-top: 0;
+    margin-bottom: 0.2em;
+    font-size: 0.8em;
+    color: #555;
+    background-color: #e9e9e9;
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.image-wrapper {
+    position: relative;
+    min-height: 60vh;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: zoom-in;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.image-wrapper:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.image-wrapper::after {
+    content: '🔍';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(110, 82, 161, 0.8);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    z-index: 10;
+}
+
+.image-loading-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.9);
+    z-index: 1;
+    font-size: 0.9em;
+    color: #888;
+    transition: opacity 0.3s ease;
+}
+
+.image-wrapper.loaded .image-loading-indicator {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card-images img {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+    object-fit: contain;
+    object-position: center;
+    z-index: 0;
+    transition: all 0.2s ease;
+    cursor: zoom-in !important;
+    margin: 0 auto;
+}
+
+.taboo-words {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.taboo-words li {
+    font-size: 1.6em;
+    padding: 1em;
+    margin-bottom: 0.8em;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    transition: all 0.3s ease;
+    border-left: 4px solid #f44336;
+}
+
+.taboo-words li:hover {
+    transform: translateX(5px);
+    background-color: #ffe5e5;
+}
+
+.card-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+/* Card flip animation */
+.taboo-card-inner {
+    position: relative;
+    width: 100%;
+    min-height: 900px;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: #f5f5f5; /* Fallback grey color */
+}
+
+.taboo-card.flipped .taboo-card-inner {
+    transform: rotateY(180deg);
+}
+
+.taboo-card-front,
+.taboo-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background-color: #ffffff;
+    background-image: url('../images/card-bg.svg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.taboo-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+}
+
+.back-header {
+    background-color: #4a366a;
+    padding: 1.8em;
+    text-align: center;
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taboo-card-back .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    background-color: rgba(249, 249, 249, 0.9);
+}
+
+.taboo-card-back ul { 
+    color: #222; 
+    font-weight: 600;
+    padding: 1em;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Button Styles */
+.button.small {
+    height: 2.5em;
+    line-height: 2.5em;
+    padding: 0 1.5em;
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+/* Game logo section */
+.game-logo {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.game-logo img {
+    max-width: 200px;
+    margin-bottom: 0.5em;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 736px) {
+    .score-section {
+        flex-direction: column;
+        gap: 1em;
+    }
+    
+    .timer {
+        font-size: 2.5em;
+    }
+    
+    .target-word {
+        font-size: 1.75em;
+    }
+    
+    .card-body {
+        height: auto;
+        min-height: calc(100% - 110px);
+        padding: 0.3em 0.5em;
+    }
+    
+    .card-images {
+        flex-direction: column;
+        align-items: center;
+        min-height: 70vh; /* Increased from 60vh */
+    }
+    
+    .image-container {
+        max-width: 100%;
+        margin-bottom: 0.3em;
+        height: auto;
+    }
+    
+    .image-wrapper {
+        min-height: 65vh; /* Increased from 50vh */
+    }
+    
+    .card-images img {
+        max-width: 100%;
+        min-height: 65vh; /* Increased from 50vh */
+    }
+    
+    .taboo-words li {
+        font-size: 1.1em;
+    }
+    
+    .taboo-card {
+        min-height: 950px;
+    }
+    
+    .taboo-card-inner {
+        min-height: 950px;
+    }
+}
+
+/* Animations */
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Custom footer for game instruction */
+.game-instructions {
+    background-color: #f9f9f9;
+    padding: 1.5em;
+    border-radius: 8px;
+    margin-top: 2em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.game-instructions h3 {
+    margin-bottom: 1em;
+    color: #6e52a1;
+}
+
+.game-instructions ol {
+    padding-left: 1.5em;
+}
+
+.game-instructions li {
+    margin-bottom: 0.5em;
+}
+
+/* Hidden class for elements that should be hidden initially */
+.hidden {
+    display: none;
+}
+
+/* PDF Generator Styles */
+.game-resources {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.game-resources h3 {
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.download-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.download-note {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.instructions h4 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.instructions ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.instructions code {
+    background-color: #f0f0f0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 0.5rem;
+}
+
+.modal-content ol {
+    margin-bottom: 1.5rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 736px) {
+    .button-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .button-container .button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.card-prompt {
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #333;
+    margin-bottom: 0.5em;
+    max-height: 3em;
+    overflow: auto;
+}
+
+.card-flip-instruction {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #6e52a1;
+    color: white;
+    font-size: 1.1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.card-flip-instruction:hover {
+    transform: scale(1.08);
+    background-color: rgba(110, 82, 161, 1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.card-flip-instruction i {
+    font-size: 1.3em;
+    animation: spin 4s infinite linear;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Debug panel styles */
+.debug-panel {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: monospace;
+}
+
+.debug-panel h3 {
+    color: #d32f2f;
+    margin-bottom: 1rem;
+}
+
+.debug-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.debug-content {
+    padding: 1rem;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.debug-section {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #333;
+    border-radius: 4px;
+}
+
+.debug-console {
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    padding: 0.5rem;
+    background-color: #333;
+    color: #4caf50;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.debug-success {
+    color: #4caf50;
+}
+
+.debug-error {
+    color: #f44336;
+}
+
+.debug-warning {
+    color: #ff9800;
+}
+
+.debug-info {
+    color: #2196f3;
+}
+
+/* Fancybox customizations */
+.fancybox__container {
+    --fancybox-bg: rgba(24, 24, 27, 0.93);
+}
+
+.fancybox__toolbar {
+    --fancybox-accent-color: #6e52a1;
+}
+
+.secondary-image-wrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 20px;
+    position: relative;
+}
+
+.secondary-image-label {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 10px;
+    text-align: center;
+    position: absolute;
+    top: -10px;
+    background: white;
+    padding: 0 10px;
+}
+
+.secondary-image {
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+/* Adjust for wide screens */
+@media (min-width: 1200px) {
+    .card-images {
+        flex-direction: column;
+    }
+    
+    .image-container {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .secondary-image-wrapper {
+        margin-top: 20px;
+        width: 100%;
+    }
+}
+
+/* Dark mode support */
+.dark-mode .secondary-image-label {
+    background: #222;
+    color: #aaa;
+}
+
+.dark-mode .secondary-image-wrapper {
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.remote-image-wrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 20px;
+    position: relative;
+}
+
+.remote-image-label {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 10px;
+    text-align: center;
+    position: absolute;
+    top: -10px;
+    background: white;
+    padding: 0 10px;
+}
+
+.remote-image {
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+/* Dark mode support */
+.dark-mode .remote-image-label {
+    background: #222;
+    color: #aaa;
+}
+
+.dark-mode .remote-image-wrapper {
+    border-top: 1px solid rgba(255,255,255,0.1);
+} 

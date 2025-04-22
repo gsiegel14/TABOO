@@ -1,0 +1,256 @@
+/* 
+ * Index Page Feature Components
+ * Styles for the homepage feature cards and layout
+ */
+
+/* Main Title Styling */
+.main-title {
+    text-align: center;
+    color: #585858;
+    margin: 0.5em 0;
+    font-size: 2.5em;
+    font-family: Europa, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.subtitle {
+    text-align: center;
+    font-family: Europa, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Logo Container */
+.container .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 2em;
+    flex-wrap: wrap;
+    padding: 0 15px;
+}
+
+.container .logo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    margin: 10px;
+}
+
+/* Feature Grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 1300px;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    font-family: Europa, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.feature-card i {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: #585858;
+}
+
+.feature-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-family: Europa, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.feature-card p {
+    font-size: 1.1em;
+    line-height: 1.4;
+    font-family: Europa, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    background: white;
+    padding: 60px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* User Info */
+.user-info {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 0.8em;
+    color: #888888;
+}
+
+/* Fancybox Visibility Fix */
+[data-fancybox-loaded="true"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1200px) {
+    .logo {
+        max-width: 350px;
+    }
+    
+    .logo-container {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .container {
+        padding: 20px;
+        max-width: 95%;
+        margin: 10px auto;
+    }
+
+    .logo-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .logo {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .feature-card {
+        height: auto;
+        min-height: 200px;
+        padding: 20px 15px;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    /* Increase touch target sizes for mobile */
+    a[href="#menu"] {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Main content adjustments */
+    #main > .inner {
+        padding: 20px 15px;
+    }
+    
+    .container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+    
+    /* Improve Fancybox usability on mobile */
+    .fancybox__button {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .fancybox__caption {
+        font-size: 0.9em !important;
+        padding: 8px 12px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .logo {
+        max-width: 250px;
+    }
+    
+    .logo-container {
+        gap: 20px;
+        margin-bottom: 1em;
+    }
+    
+    .main-title {
+        font-size: 2em;
+    }
+    
+    .feature-card {
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.3em;
+        margin-bottom: 8px;
+    }
+
+    .feature-card p {
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    .feature-card i {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+    
+    /* Better Fancybox controls for tiny screens */
+    .fancybox__button {
+        width: 36px !important;
+        height: 36px !important;
+    }
+    
+    /* Remove hover effects on mobile */
+    .section:hover,
+    .image-tile:hover,
+    .gallery-tile:hover,
+    .logo:hover,
+    .sidebar-logo:hover,
+    .reference-tile:hover,
+    .team-tile:hover,
+    .grid-item:hover,
+    .tiles article:hover {
+        transform: none;
+    }
+}
+
+/* Improve touch targets for mobile */
+@media (hover: none) {
+    .feature-card {
+        cursor: default;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+}
