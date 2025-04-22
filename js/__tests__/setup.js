@@ -4,7 +4,8 @@ require('@testing-library/jest-dom');
 global.window = {
   location: {
     search: ''
-  }
+  },
+  tabooCards: require('../card-data.js').tabooCards
 };
 
 global.Image = class {
@@ -18,4 +19,14 @@ global.Audio = class {
     setTimeout(() => this.oncanplaythrough && this.oncanplaythrough());
   }
   play() { return Promise.resolve(); }
+};
+
+global.document = {
+  getElementById: () => ({
+    style: {},
+    classList: {
+      add: () => {},
+      remove: () => {}
+    }
+  })
 };
