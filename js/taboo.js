@@ -110,16 +110,19 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize Fancybox
         initFancybox();
 
-        // Check if tabooCards is available
-        if (typeof tabooCards === 'undefined') {
-            console.error('Card data not loaded. Please check that card-data.js is loaded before taboo.js.');
-            // Create placeholder cards if necessary
-            window.tabooCards = [{
-                id: 999,
-                targetWord: "Error Loading Cards",
-                tabooWords: ["Please refresh the page", "Check browser console", "Data loading issue"],
-                category: "Error"
-            }];
+        // Ensure card data is properly loaded
+        if (typeof window.tabooCards === 'undefined' || !Array.isArray(window.tabooCards)) {
+            console.error('Card data not loaded properly');
+            window.tabooCards = [];
+            return;
+        }
+
+        // Initialize current index
+        window.currentCardIndex = 0;
+        
+        // Load the first card
+        if (window.tabooCards.length > 0) {
+            displayCard(0);
         }
 
         // Shuffle the cards
@@ -176,20 +179,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Display a card
     function displayCard(index) {
-        // Ensure we have valid cards data
-        if (!tabooCards || !tabooCards.length) {
-            console.error('No cards data available');
+        // Guard clauses for data validation
+        if (!window.tabooCards || !Array.isArray(window.tabooCards)) {
+            console.error('Cards data is not properly initialized');
             return;
         }
 
-        // Ensure index is within bounds
-        index = Math.max(0, Math.min(index, tabooCards.length - 1));
-        
-        // Update current index
-        currentCardIndex = index;
-        console.log('Displaying card at index:', currentCardIndex);
+        if (window.tabooCards.length === 0) {
+            console.error('No cards available');
+            return;
+        }
 
-        const card = tabooCards[currentCardIndex];
+        // Ensure index is valid
+        const safeIndex = ((index % window.tabooCards.length) + window.tabooCards.length) % window.tabooCards.length;
+        window.currentCardIndex = safeIndex;
+        
+        const card = window.tabooCards[safeIndex];
+        if (!card) {
+            console.error('Invalid card at index:', safeIndex);
+            return;
+        }
+
+        console.log('Displaying card at index:', safeIndex);
         console.log('Displaying card:', currentCardIndex);
 
         // Add animation class
@@ -360,36 +371,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Card navigation
-        const handlePrevCard = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Previous button clicked, current index:', currentCardIndex);
-            let newIndex = currentCardIndex - 1;
+        function handlePrevCard() {
+            if (!window.tabooCards || !window.tabooCards.length) return;
+            
+            let newIndex = window.currentCardIndex - 1;
             if (newIndex < 0) {
-                newIndex = tabooCards.length - 1;
+                newIndex = window.tabooCards.length - 1;
             }
-            currentCardIndex = newIndex;
+            window.currentCardIndex = newIndex;
             displayCard(newIndex);
             playSound('flip');
             console.log('Previous button - new index:', newIndex);
-        };
+        }
 
-        const handleNextCard = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Next button clicked, current index:', currentCardIndex);
-            let newIndex = currentCardIndex + 1;
-            if (newIndex >= tabooCards.length) {
+        function handleNextCard() {
+            if (!window.tabooCards || !window.tabooCards.length) return;
+            
+            let newIndex = window.currentCardIndex + 1;
+            if (newIndex >= window.tabooCards.length) {
                 newIndex = 0;
             }
-            currentCardIndex = newIndex;
+            window.currentCardIndex = newIndex;
             displayCard(newIndex);
             playSound('flip');
             console.log('Next button - new index:', newIndex);
-        };
+        }
 
-        prevCardBtn.addEventListener('click', handlePrevCard);
-        nextCardBtn.addEventListener('click', handleNextCard);
+        // Remove existing listeners
+        prevCardBtn.replaceWith(prevCardBtn.cloneNode(true));
+        nextCardBtn.replaceWith(nextCardBtn.cloneNode(true));
+        
+        // Get fresh references and add new listeners
+        const freshPrevBtn = document.getElementById('prev-card');
+        const freshNextBtn = document.getElementById('next-card');
+        
+        freshPrevBtn.addEventListener('click', handlePrevCard);
+        freshNextBtn.addEventListener('click', handleNextCard);
 
         // Add button hover effects
         [prevCardBtn, nextCardBtn].forEach(btn => {
