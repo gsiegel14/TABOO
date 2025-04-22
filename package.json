@@ -15,9 +15,6 @@
   }
 }
 
-//This is a placeholder for the actual tests.  This needs to be expanded
-//based on the specific UI and image loading mechanisms of the application.
-
 // __tests__/uiTests.js
 const { JSDOM } = require('jsdom');
 const { it, expect, describe } = require('jest');

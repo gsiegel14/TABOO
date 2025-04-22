@@ -18,19 +18,52 @@ describe('Card Image Tests', () => {
   });
 
   test('All card images exist and are accessible', () => {
+    const imageErrors = [];
     window.tabooCards.forEach(card => {
       if (card.target_img) {
         const imgPath = path.resolve(__dirname, '../../', card.target_img);
         const exists = fs.existsSync(imgPath);
-        expect(exists).toBeTruthy();
+        if (!exists) {
+          imageErrors.push(`Missing target image for card ${card.id}: ${card.target_img}`);
+        }
       }
 
       if (card.probe_img) {
         const imgPath = path.resolve(__dirname, '../../', card.probe_img);
         const exists = fs.existsSync(imgPath);
-        expect(exists).toBeTruthy();
+        if (!exists) {
+          imageErrors.push(`Missing probe image for card ${card.id}: ${card.probe_img}`);
+        }
       }
     });
+    
+    if (imageErrors.length > 0) {
+      console.error('Image errors found:', imageErrors);
+      fail(imageErrors.join('\n'));
+    }
+  });
+
+test('Audio files exist and are accessible', () => {
+    const audioFiles = [
+      'sounds/beep-short.mp3',
+      'sounds/beep-long.mp3',
+      'sounds/correct.mp3',
+      'sounds/wrong.mp3',
+      'sounds/flip.mp3'
+    ];
+    
+    const missingAudio = [];
+    audioFiles.forEach(file => {
+      const exists = fs.existsSync(path.resolve(__dirname, '../../', file));
+      if (!exists) {
+        missingAudio.push(`Missing audio file: ${file}`);
+      }
+    });
+    
+    if (missingAudio.length > 0) {
+      console.error('Audio errors found:', missingAudio);
+      fail(missingAudio.join('\n'));
+    }
   });
 
   test('Audio files exist', () => {
