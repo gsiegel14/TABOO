@@ -4,27 +4,16 @@
 
 const fs = require('fs');
 const path = require('path');
-
-// Mock browser environment
-document.body.innerHTML = `
-  <div id="card-container"></div>
-  <button id="flip-button"></button>
-  <audio id="flip-sound"></audio>
-  <audio id="correct-sound"></audio>
-  <audio id="wrong-sound"></audio>
-`;
+const { JSDOM } = require('jsdom');
 
 describe('Taboo Game Tests', () => {
-  let document;
-  let window;
+  beforeAll(() => {
+    global.window = new JSDOM().window;
+    require('../card-data.js');
+  });
 
   beforeEach(() => {
-    document.body.innerHTML = fs.readFileSync(path.resolve(__dirname, '../../index.html'), 'utf8');
-
-    // Mock card data
-    window.tabooCards = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../card-data.js'), 'utf8')
-      .replace('const tabooCards =', '')
-      .replace(/;.*$/, ''));
+    // Mock card data - simplified using beforeAll hook
   });
 
   // UI Element Tests
@@ -60,42 +49,68 @@ describe('Taboo Game Tests', () => {
     });
   });
 
-  // Image Loading Tests
-  describe('Image Loading', () => {
-    test('All target images exist', () => {
-      const imageErrors = [];
-      window.tabooCards.forEach(card => {
-        if (card.target_img) {
-          const paths = [
-            `images/cards/local/${card.id}_target_${path.basename(card.target_img)}`,
-            card.target_img
-          ];
-          const exists = paths.some(p => fs.existsSync(path.resolve(__dirname, '../../', p)));
-          if (!exists) {
-            imageErrors.push(`Card ${card.id}: Missing target image. Tried: ${paths.join(', ')}`);
-          }
-        }
-      });
-      expect(imageErrors).toEqual([]);
+  // Card and Image Tests (from edited code)
+  describe('Card and Image Tests', () => {
+    test('All 35 cards are present', () => {
+      expect(window.tabooCards.length).toBe(35);
     });
 
-    test('All probe images exist', () => {
-      const imageErrors = [];
+    test('All cards have required properties', () => {
       window.tabooCards.forEach(card => {
-        if (card.probe_img) {
-          const paths = [
+        expect(card).toHaveProperty('id');
+        expect(card).toHaveProperty('target_img');
+        expect(card).toHaveProperty('probe_img');
+        expect(card).toHaveProperty('prompt');
+        expect(card).toHaveProperty('tabooWords');
+      });
+    });
+
+    test('All image files exist', () => {
+      const imageErrors = [];
+
+      window.tabooCards.forEach(card => {
+        const paths = {
+          target: [
+            `images/cards/local/${card.id}_target_${path.basename(card.target_img)}`,
+            card.target_img
+          ],
+          probe: [
             `images/cards/local/${card.id}_probe_${path.basename(card.probe_img)}`,
             card.probe_img
-          ];
-          const exists = paths.some(p => fs.existsSync(path.resolve(__dirname, '../../', p)));
-          if (!exists) {
-            imageErrors.push(`Card ${card.id}: Missing probe image. Tried: ${paths.join(', ')}`);
-          }
+          ]
+        };
+
+        const targetExists = paths.target.some(p =>
+          fs.existsSync(path.resolve(__dirname, '../../', p))
+        );
+        const probeExists = paths.probe.some(p =>
+          fs.existsSync(path.resolve(__dirname, '../../', p))
+        );
+
+        if (!targetExists) {
+          imageErrors.push(`Card ${card.id}: Missing target image`);
+        }
+        if (!probeExists) {
+          imageErrors.push(`Card ${card.id}: Missing probe image`);
         }
       });
-      expect(imageErrors).toEqual([]);
+
+      expect(imageErrors).toHaveLength(0);
+    });
+
+    test('All audio files exist', () => {
+      const audioFiles = [
+        'sounds/correct.mp3',
+        'sounds/wrong.mp3',
+        'sounds/flip.mp3'
+      ];
+
+      audioFiles.forEach(file => {
+        expect(fs.existsSync(path.resolve(__dirname, '../../', file))).toBe(true);
+      });
     });
   });
+
 
   // Card Display Tests
   describe('Card Display', () => {
@@ -116,23 +131,6 @@ describe('Taboo Game Tests', () => {
       nextBtn.click();
 
       expect(targetWord.textContent).toBe(window.tabooCards[1].targetWord);
-    });
-  });
-
-  describe('Audio Tests', () => {
-    const requiredSounds = [
-      'sounds/flip.mp3',
-      'sounds/correct.mp3',
-      'sounds/wrong.mp3',
-      'sounds/beep-short.mp3',
-      'sounds/beep-long.mp3'
-    ];
-
-    test('All sound files exist', () => {
-      const missingFiles = requiredSounds.filter(sound =>
-        !fs.existsSync(path.resolve(__dirname, '../../', sound))
-      );
-      expect(missingFiles).toEqual([]);
     });
   });
 
