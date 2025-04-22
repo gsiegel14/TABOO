@@ -192,6 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Ensure index is valid
         const safeIndex = ((index % window.tabooCards.length) + window.tabooCards.length) % window.tabooCards.length;
         window.currentCardIndex = safeIndex;
+        currentCardIndex = safeIndex; // Update local variable too
 
         const card = window.tabooCards[safeIndex];
         if (!card) {
@@ -200,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         console.log('Displaying card at index:', safeIndex);
-        console.log('Displaying card:', currentCardIndex);
 
         // Add animation class
         tabooCardElement.classList.add('animating');
@@ -384,6 +384,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function handleNextCard() {
+            console.log('Next button clicked, current index:', window.currentCardIndex);
             if (!window.tabooCards || !window.tabooCards.length) return;
 
             let newIndex = window.currentCardIndex + 1;
@@ -396,16 +397,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Next button - new index:', newIndex);
         }
 
-        // Remove existing listeners
-        prevCardBtn.replaceWith(prevCardBtn.cloneNode(true));
-        nextCardBtn.replaceWith(nextCardBtn.cloneNode(true));
+        // Create global navigation functions for testing
+        window.nextCard = handleNextCard;
+        window.prevCard = handlePrevCard;
 
-        // Get fresh references and add new listeners
-        const freshPrevBtn = document.getElementById('prev-card');
-        const freshNextBtn = document.getElementById('next-card');
-
-        freshPrevBtn.addEventListener('click', handlePrevCard);
-        freshNextBtn.addEventListener('click', handleNextCard);
+        // Clear existing listeners and create fresh ones
+        prevCardBtn.onclick = null;
+        nextCardBtn.onclick = null;
+        
+        // Add direct click handlers
+        prevCardBtn.onclick = handlePrevCard;
+        nextCardBtn.onclick = handleNextCard;
 
         // Add button hover effects
         [prevCardBtn, nextCardBtn].forEach(btn => {
