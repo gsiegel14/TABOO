@@ -1,11 +1,8 @@
 
 module.exports = {
   testEnvironment: 'jsdom',
-  setupFiles: ['<rootDir>/js/__tests__/setup.js'],
-  moduleNameMapper: {
-    '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
-    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js'
-  },
+  setupFilesAfterEnv: ['<rootDir>/js/__tests__/setup.js'],
+  moduleDirectories: ['node_modules', '<rootDir>'],
   testMatch: ['**/__tests__/**/*.test.js'],
   verbose: true
 };

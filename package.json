@@ -22,7 +22,7 @@ const { it, expect, describe } = require('jest');
 
 describe('UI Tests', () => {
     it('should render 35 cards', () => {
-        const dom = new JSDOM(`<div id="root"><div class="card"></div><div class="card"></div>...</div>`); //replace ... with 33 more card divs
+        const dom = new JSDOM(`<div id="root"><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div></div>`); 
         const cards = dom.window.document.querySelectorAll('.card');
         expect(cards.length).toBe(35);
     });
