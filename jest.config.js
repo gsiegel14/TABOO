@@ -1,10 +1,11 @@
 
 module.exports = {
   testEnvironment: 'jsdom',
-  moduleFileExtensions: ['js', 'json'],
+  setupFiles: ['<rootDir>/js/__tests__/setup.js'],
+  moduleNameMapper: {
+    '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
+    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js'
+  },
   testMatch: ['**/__tests__/**/*.test.js'],
-  setupFilesAfterEnv: ['@testing-library/jest-dom'],
-  testEnvironmentOptions: {
-    url: 'http://localhost'
-  }
+  verbose: true
 };
