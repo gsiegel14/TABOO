@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Display a card
     function displayCard(index) {
         console.log('Display card called with index:', index);
-        
+
         // Guard clauses for data validation
         if (!window.tabooCards || !Array.isArray(window.tabooCards)) {
             console.error('Cards data is not properly initialized');
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Ensure index is valid
         const safeIndex = ((index % window.tabooCards.length) + window.tabooCards.length) % window.tabooCards.length;
         console.log('Calculated safe index:', safeIndex);
-        
+
         // Update both local and global indices
         window.currentCardIndex = safeIndex;
         currentCardIndex = safeIndex; // Update local variable too
@@ -377,8 +377,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Card navigation
         function handlePrevCard(event) {
             if (event) event.preventDefault();
-            console.log('Previous button clicked, current index:', window.currentCardIndex);
-            
+            console.log('Previous button handler called');
+
             if (!window.tabooCards || !window.tabooCards.length) {
                 console.error('No cards available for navigation');
                 return;
@@ -389,25 +389,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 newIndex = window.tabooCards.length - 1;
             }
             console.log('Previous button - new index:', newIndex);
-            
+
             // First update current index
             window.currentCardIndex = newIndex;
             // Then display the card at that index
             displayCard(newIndex);
-            
+
             try {
                 playSound('flip');
             } catch (e) {
                 console.log('Sound play error:', e);
             }
-            
+
             return false; // Prevent default
         }
 
         function handleNextCard(event) {
             if (event) event.preventDefault();
-            console.log('Next button clicked, current index:', window.currentCardIndex);
-            
+            console.log('Next button handler called, current index:', window.currentCardIndex);
+
             if (!window.tabooCards || !window.tabooCards.length) {
                 console.error('No cards available for navigation');
                 return;
@@ -418,46 +418,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 newIndex = 0;
             }
             console.log('Next button - new index:', newIndex);
-            
+
             // First update current index
             window.currentCardIndex = newIndex;
             // Then display the card at that index
             displayCard(newIndex);
-            
+
             try {
                 playSound('flip');
             } catch (e) {
                 console.log('Sound play error:', e);
             }
-            
+
             return false; // Prevent default
         }
 
-        // Create global navigation functions for testing
+        // Create global navigation functions for testing and direct access
         window.nextCard = handleNextCard;
         window.prevCard = handlePrevCard;
 
-        // Clear existing listeners and create fresh ones
-        if (prevCardBtn) {
-            prevCardBtn.onclick = null;
-            // Add multiple event handlers for reliability
-            prevCardBtn.onclick = handlePrevCard;
-            prevCardBtn.addEventListener('click', handlePrevCard);
-        }
-        
-        if (nextCardBtn) {
-            nextCardBtn.onclick = null;
-            // Add multiple event handlers for reliability
-            nextCardBtn.onclick = handleNextCard;
-            nextCardBtn.addEventListener('click', handleNextCard);
-        }
-        
+        // Remove any existing click listeners
+        prevCardBtn.removeEventListener('click', handlePrevCard);
+        nextCardBtn.removeEventListener('click', handleNextCard);
+
+        // Add direct click handlers using addEventListener for better reliability
+        prevCardBtn.addEventListener('click', function(e) {
+            console.log("Previous button clicked directly");
+            handlePrevCard(e);
+            return false;
+        });
+
+        nextCardBtn.addEventListener('click', function(e) {
+            console.log("Next button clicked directly");
+            handleNextCard(e);
+            return false;
+        });
+
         // Add keyboard navigation for reliability
         document.removeEventListener('keydown', handleKeyPress);
         document.addEventListener('keydown', handleKeyPress);
-        
+
         console.log('Card navigation handlers attached');
-        
+
         // Add direct button methods
         nextCardBtn.nextCard = handleNextCard;
         prevCardBtn.prevCard = handlePrevCard;
