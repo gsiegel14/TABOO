@@ -302,48 +302,9 @@
             }
         });
         
-        // Test Fancybox functionality
+        // Initialize game when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Add a test button to verify Fancybox works
-            const testButton = document.createElement('button');
-            testButton.textContent = 'Test Fancybox';
-            testButton.className = 'button primary small';
-            testButton.style.position = 'fixed';
-            testButton.style.right = '20px';
-            testButton.style.bottom = '20px';
-            testButton.style.zIndex = '9999';
-            
-            testButton.addEventListener('click', function() {
-                console.log('Test button clicked');
-                if (typeof Fancybox !== 'undefined') {
-                    console.log('Launching Fancybox test');
-                    Fancybox.show([{
-                        src: 'images/cards/placeholder.svg',
-                        caption: 'Test Image'
-                    }], {
-                        // Ensure zoom is enabled
-                        Image: { 
-                            zoom: true,
-                            wheel: true,
-                            click: true,
-                            doubleClick: true
-                        },
-                        Toolbar: {
-                            display: {
-                                left: ["infobar"],
-                                middle: [],
-                                right: ["zoom", "slideshow", "fullscreen", "download", "thumbs", "close"]
-                            }
-                        }
-                    });
-                } else {
-                    console.error('Fancybox not loaded!');
-                    alert('Fancybox library is not loaded properly. Check console for details.');
-                }
-            });
-            
-            document.body.appendChild(testButton);
-            console.log('Test button added to page');
+            console.log('Game initialized');
         });
     </script>
 </body>
