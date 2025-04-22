@@ -363,12 +363,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Card navigation
-        prevCardBtn.addEventListener('click', function() {
+        prevCardBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             displayCard(currentCardIndex - 1);
             playSound('flip');
         });
         
-        nextCardBtn.addEventListener('click', function() {
+        nextCardBtn.addEventListener('click', function(e) {
+            e.preventDefault(); 
+            e.stopPropagation();
             displayCard(currentCardIndex + 1);
             playSound('flip');
         });
