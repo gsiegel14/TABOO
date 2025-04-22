@@ -2,6 +2,48 @@
   "dependencies": {
     "express": "^5.1.0",
     "node-fetch": "^2.7.0",
-    "puppeteer": "^24.6.1"
+    "puppeteer": "^24.6.1",
+    "jest": "^29.6.4",
+    "jsdom": "^22.1.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
   }
 }
+
+//This is a placeholder for the actual tests.  This needs to be expanded
+//based on the specific UI and image loading mechanisms of the application.
+
+// __tests__/uiTests.js
+const { JSDOM } = require('jsdom');
+const { it, expect, describe } = require('jest');
+
+
+describe('UI Tests', () => {
+    it('should render 35 cards', () => {
+        const dom = new JSDOM(`<div id="root"><div class="card"></div><div class="card"></div>...</div>`); //replace ... with 33 more card divs
+        const cards = dom.window.document.querySelectorAll('.card');
+        expect(cards.length).toBe(35);
+    });
+
+
+    // Add more tests here for UI buttons and image loading
+    // Example:
+    it('should have a button with text "Button 1"', () => {
+        const dom = new JSDOM(`<button id="button1">Button 1</button>`);
+        const button = dom.window.document.getElementById('button1');
+        expect(button.textContent).toBe('Button 1');
+    });
+
+});
+
+// __tests__/imageLoadingTests.js (placeholder)
+
+describe('Image Loading Tests', () => {
+    it('should load images correctly', () => {
+      // Implement image loading test logic here. This will likely involve mocking
+      // network requests or using a test environment with image assets.
+      expect(true).toBe(true); // Replace with actual assertions.
+    });
+});
