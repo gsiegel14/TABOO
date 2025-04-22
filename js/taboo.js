@@ -187,12 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update current index
         currentCardIndex = index;
-        console.log('Displaying card at index:', currentCardIndex, 'Total cards:', tabooCards.length);
-        
-        // Force UI update for card content
-        requestAnimationFrame(() => {
-            const card = tabooCards[currentCardIndex];
-            console.log('Displaying card:', card);
+        console.log('Displaying card at index:', currentCardIndex);
 
         const card = tabooCards[currentCardIndex];
         console.log('Displaying card:', currentCardIndex);
@@ -365,43 +360,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Card navigation
-        console.log('Setting up card navigation. Buttons:', prevCardBtn, nextCardBtn);
-        
-        if (!prevCardBtn || !nextCardBtn) {
-            console.error('Navigation buttons not found! Check HTML IDs.');
-            return;
-        }
-
         prevCardBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Previous button clicked, current index:', currentCardIndex);
-            
             let newIndex = currentCardIndex - 1;
             if (newIndex < 0) {
                 newIndex = tabooCards.length - 1;
             }
-            
-            console.log('Previous button - new index will be:', newIndex);
-            currentCardIndex = newIndex;
             displayCard(newIndex);
             playSound('flip');
+            console.log('Previous button clicked, new index:', newIndex);
         });
         
         nextCardBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Next button clicked, current index:', currentCardIndex);
-            
             let newIndex = currentCardIndex + 1;
             if (newIndex >= tabooCards.length) {
                 newIndex = 0;
             }
-            
-            console.log('Next button - new index will be:', newIndex);
-            currentCardIndex = newIndex;
             displayCard(newIndex);
             playSound('flip');
+            console.log('Next button clicked, new index:', newIndex);
         });
 
         // Add button hover effects
