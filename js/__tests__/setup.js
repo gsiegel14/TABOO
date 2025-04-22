@@ -1,11 +1,30 @@
 
 require('@testing-library/jest-dom');
+const fs = require('fs');
+const path = require('path');
 
 global.window = {
   location: {
     search: ''
   },
   tabooCards: require('../card-data.js').tabooCards
+};
+
+global.document = {
+  getElementById: jest.fn().mockReturnValue({
+    style: {},
+    classList: {
+      add: jest.fn(),
+      remove: jest.fn()
+    }
+  }),
+  createElement: jest.fn().mockReturnValue({
+    style: {},
+    classList: {
+      add: jest.fn(),
+      remove: jest.fn()
+    }
+  })
 };
 
 global.Image = class {
@@ -21,12 +40,8 @@ global.Audio = class {
   play() { return Promise.resolve(); }
 };
 
-global.document = {
-  getElementById: () => ({
-    style: {},
-    classList: {
-      add: () => {},
-      remove: () => {}
-    }
-  })
-};
+// Mock file system for image tests
+jest.mock('fs', () => ({
+  existsSync: jest.fn().mockReturnValue(true),
+  readFileSync: jest.fn()
+}));
