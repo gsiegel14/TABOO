@@ -1,34 +1,39 @@
 
+const { JSDOM } = require('jsdom');
 const fs = require('fs');
 const path = require('path');
-const { JSDOM } = require('jsdom');
 
 describe('Card Navigation Tests', () => {
-  let window, document, nextBtn, prevBtn;
+  let dom, document, nextBtn, prevBtn, targetWord;
   let currentCardIndex = 0;
 
   beforeEach(() => {
     // Set up DOM environment
-    const dom = new JSDOM(`
+    dom = new JSDOM(`
       <!DOCTYPE html>
       <div id="card-container">
         <button id="prev-card">Previous</button>
         <button id="next-card">Next</button>
         <div id="taboo-card">
           <div id="target-word"></div>
-          <img id="card-target-img" />
-          <img id="card-probe-img" />
+          <div id="card-images">
+            <div class="image-container">
+              <img id="card-target-img" />
+              <img id="card-probe-img" />
+            </div>
+          </div>
         </div>
       </div>
     `);
 
     // Setup globals
-    window = dom.window;
-    document = window.document;
+    global.window = dom.window;
+    global.document = window.document;
     
-    // Get button elements
+    // Get elements
     nextBtn = document.getElementById('next-card');
     prevBtn = document.getElementById('prev-card');
+    targetWord = document.getElementById('target-word');
 
     // Mock card data
     window.tabooCards = [
@@ -49,15 +54,12 @@ describe('Card Navigation Tests', () => {
     // Mock functions
     window.playSound = jest.fn();
     window.ImageProxy = {
-      loadImage: jest.fn((img, src, fallback, onSuccess, onError) => {
-        console.log('Loading image:', src);
-        onSuccess();
-      })
+      loadImage: jest.fn()
     };
   });
 
   test('Next button advances to next card', () => {
-    console.log('Starting next button test');
+    console.log('Testing next button navigation');
     
     // Initial state
     expect(currentCardIndex).toBe(0);
@@ -66,18 +68,13 @@ describe('Card Navigation Tests', () => {
     const clickEvent = new window.Event('click');
     nextBtn.dispatchEvent(clickEvent);
     
-    // Log state after click
-    console.log('Current index after next:', currentCardIndex);
-    console.log('Expected card:', window.tabooCards[1].targetWord);
-    
     // Verify navigation
     expect(currentCardIndex).toBe(1);
-    expect(document.getElementById('target-word').textContent)
-      .toBe(window.tabooCards[1].targetWord);
+    expect(window.playSound).toHaveBeenCalledWith('flip');
   });
 
   test('Previous button moves to previous card', () => {
-    console.log('Starting previous button test');
+    console.log('Testing previous button navigation');
     
     // Start from second card
     currentCardIndex = 1;
@@ -86,27 +83,37 @@ describe('Card Navigation Tests', () => {
     const clickEvent = new window.Event('click');
     prevBtn.dispatchEvent(clickEvent);
     
-    // Log state after click
-    console.log('Current index after prev:', currentCardIndex);
-    console.log('Expected card:', window.tabooCards[0].targetWord);
-    
     // Verify navigation
     expect(currentCardIndex).toBe(0);
-    expect(document.getElementById('target-word').textContent)
-      .toBe(window.tabooCards[0].targetWord);
+    expect(window.playSound).toHaveBeenCalledWith('flip');
   });
 
   test('Navigation wraps around at boundaries', () => {
     console.log('Testing boundary navigation');
     
-    // Test going forward from last card
+    // Test forward wrap
     currentCardIndex = window.tabooCards.length - 1;
     nextBtn.dispatchEvent(new window.Event('click'));
     expect(currentCardIndex).toBe(0);
     
-    // Test going backward from first card
+    // Test backward wrap
     currentCardIndex = 0;
     prevBtn.dispatchEvent(new window.Event('click'));
     expect(currentCardIndex).toBe(window.tabooCards.length - 1);
+  });
+
+  test('Card content updates correctly', () => {
+    console.log('Testing card content updates');
+    
+    // Initial card
+    expect(targetWord.textContent).toBe(window.tabooCards[0].targetWord);
+    
+    // Next card
+    nextBtn.dispatchEvent(new window.Event('click'));
+    expect(targetWord.textContent).toBe(window.tabooCards[1].targetWord);
+    
+    // Previous card
+    prevBtn.dispatchEvent(new window.Event('click'));
+    expect(targetWord.textContent).toBe(window.tabooCards[0].targetWord);
   });
 });
