@@ -1,0 +1,3 @@
+// scripts/ensure-images.js
+#!/usr/bin/env node
+// ... existing code ...

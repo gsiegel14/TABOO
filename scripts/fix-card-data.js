@@ -1,0 +1,171 @@
+/**
+ * Fix Card Data Script
+ * 
+ * This script analyzes both the card data and the available files,
+ * updating the card data to match what's actually in the filesystem.
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { tabooCards } = require('../js/card-data.js');
+
+const CARDS_DIR = path.join(__dirname, '..', 'images/cards/local');
+console.log(`🔍 Analyzing card data and files in ${CARDS_DIR}...`);
+
+// Get all available image files
+const allFiles = fs.readdirSync(CARDS_DIR).filter(file => {
+  // Filter out tiny files (likely placeholders)
+  const stats = fs.statSync(path.join(CARDS_DIR, file));
+  return stats.size > 5000;
+});
+
+console.log(`Found ${allFiles.length} valid image files.`);
+
+// Map card IDs to available image files
+const availableImagesByCard = {};
+allFiles.forEach(file => {
+  // Extract card ID from filename pattern like "24_target_something.jpg"
+  const match = file.match(/^(\d+)_target_/);
+  if (match) {
+    const cardId = parseInt(match[1], 10);
+    if (!availableImagesByCard[cardId]) {
+      availableImagesByCard[cardId] = [];
+    }
+    availableImagesByCard[cardId].push(file);
+  }
+});
+
+// Check what's in the card data vs. what's available
+const mismatches = [];
+const needsDownload = [];
+let updatedCards = 0;
+
+tabooCards.forEach(card => {
+  const cardId = card.id;
+  
+  // Extract filename from the path
+  const currentTargetFile = card.target_img ? path.basename(card.target_img) : null;
+  const currentLocalFile = card.local_target_img ? path.basename(card.local_target_img) : null;
+  
+  // Check if the files actually exist
+  const targetFileExists = currentTargetFile && fs.existsSync(path.join(CARDS_DIR, currentTargetFile));
+  const localFileExists = currentLocalFile && fs.existsSync(path.join(CARDS_DIR, currentLocalFile));
+  
+  // Get available alternatives for this card
+  const availableFiles = availableImagesByCard[cardId] || [];
+  
+  if (!targetFileExists && availableFiles.length > 0) {
+    // Target file doesn't exist, but we have alternatives
+    mismatches.push({
+      id: cardId,
+      currentPath: card.target_img,
+      suggestedPath: `images/cards/local/${availableFiles[0]}`,
+      reason: "target_img doesn't exist, but alternative is available"
+    });
+  } else if (!targetFileExists && !availableFiles.length) {
+    // Target file doesn't exist and no alternatives
+    needsDownload.push({
+      id: cardId,
+      remoteUrl: card.remote_target_img,
+      path: card.target_img,
+      reason: "No local file exists for this card"
+    });
+  }
+  
+  if (!localFileExists && availableFiles.length > 0) {
+    // Local file doesn't exist, but we have alternatives
+    mismatches.push({
+      id: cardId,
+      currentPath: card.local_target_img,
+      suggestedPath: `images/cards/local/${availableFiles[0]}`,
+      reason: "local_target_img doesn't exist, but alternative is available"
+    });
+  } else if (!localFileExists && !availableFiles.length) {
+    // Local file doesn't exist and no alternatives
+    if (!needsDownload.some(item => item.id === cardId)) {
+      needsDownload.push({
+        id: cardId,
+        remoteUrl: card.remote_target_img,
+        path: card.local_target_img,
+        reason: "No local file exists for this card"
+      });
+    }
+  }
+});
+
+// Report findings
+console.log(`\n📊 Analysis Results:`);
+console.log(`✅ Cards with mismatched paths: ${mismatches.length}`);
+console.log(`❌ Cards needing downloads: ${needsDownload.length}`);
+
+if (mismatches.length > 0) {
+  console.log("\n🔧 Path Mismatches (can be fixed with local files):");
+  mismatches.forEach(mismatch => {
+    console.log(`  Card #${mismatch.id}:`);
+    console.log(`    Current: ${mismatch.currentPath}`);
+    console.log(`    Suggested: ${mismatch.suggestedPath}`);
+    console.log(`    Reason: ${mismatch.reason}`);
+  });
+}
+
+if (needsDownload.length > 0) {
+  console.log("\n⬇️ Images Needing Downloads:");
+  needsDownload.forEach(item => {
+    console.log(`  Card #${item.id}: ${item.path} (Remote URL: ${item.remoteUrl || 'none'})`);
+  });
+}
+
+// Generate the fixed card data
+const updatedCardData = tabooCards.map(card => {
+  const mismatch = mismatches.find(m => m.id === card.id);
+  if (mismatch) {
+    // Create an updated card with the correct paths
+    updatedCards++;
+    return {
+      ...card,
+      target_img: mismatch.suggestedPath,
+      local_target_img: mismatch.suggestedPath
+    };
+  }
+  return card;
+});
+
+// Write the updated card data if fixes were made
+if (updatedCards > 0) {
+  // Format the card data object as a string
+  const updatedCardDataString = `/*
+ * Taboo Game Card Data (Revised for Scanning Normal Anatomy on Models)
+ * Prompts focus on finding standard views or normal structures,
+ * suitable for blindfolded scanning practice on ultrasound models/phantoms.
+ * Removed pathology-dependent, eye, groin, pregnancy, and testicle cards.
+ * Verified remote_target_img links point to relevant normal anatomy/views.
+ * Path-fixed version generated by fix-card-data.js
+ */
+
+const tabooCards = ${JSON.stringify(updatedCardData, null, 2)};
+
+// Example of how to use:
+// console.log(tabooCards[0].prompt);
+// console.log(tabooCards[0].targetWord);
+// console.log(tabooCards[0].tabooWords);
+// console.log(tabooCards[0].remote_target_img);
+
+// Export for Node.js environments
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { tabooCards };
+}`;
+
+  // Write to card-data.js.new
+  const outputPath = path.join(__dirname, '..', 'js', 'card-data.js.new');
+  fs.writeFileSync(outputPath, updatedCardDataString);
+  
+  console.log(`\n✅ Fixed card data written to js/card-data.js.new`);
+  console.log(`Run the following to apply the fixes:`);
+  console.log(`mv js/card-data.js.new js/card-data.js`);
+}
+
+// If downloads are needed, suggest running the download script
+if (needsDownload.length > 0) {
+  console.log(`\nDownload missing images with:`);
+  console.log(`node scripts/download-missing.js`);
+} 

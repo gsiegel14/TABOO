@@ -27,7 +27,7 @@
 @import url('components/image-gallery.css'); /* Image Gallery styles */
 
 /* Utilities */
-@import url('utilities/vexus-colors.css');
+@import url('utilities/colors.css');
 
 /* Responsive Utilities */
 @import url('responsive/responsive.css');

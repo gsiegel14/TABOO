@@ -1,0 +1,549 @@
+/*
+ * Taboo Game Card Data (Revised for Scanning Normal Anatomy on Models)
+ * Prompts focus on finding standard views or normal structures,
+ * suitable for blindfolded scanning practice on ultrasound models/phantoms.
+ * Removed pathology-dependent, eye, groin, pregnancy, and testicle cards.
+ * Verified remote_target_img links point to relevant normal anatomy/views.
+ */
+
+const tabooCards = [
+    {
+        "id": 1,
+        "prompt": "Trauma: show free fluid between liver & right kidney.",
+        "targetWord": "Trauma",
+        "target_img": "images/cards/local/1_target_MorisonNoText.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/1_target_MorisonNoText.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "FAST",
+            "Morison's",
+            "RUQ",
+            "Liver",
+            "Kidney"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/f/fa/MorisonNoText.png"
+    },
+    {
+        "id": 2,
+        "prompt": "Trauma: LUQ view—spleen–kidney interface.",
+        "targetWord": "LUQ",
+        "target_img": "images/cards/local/2_target_Splenorenal_recess_ultrasound.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/2_target_Splenorenal_recess_ultrasound.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "LUQ",
+            "Spleen",
+            "Kidney",
+            "FAST"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Splenorenal_recess_ultrasound.png"
+    },
+    {
+        "id": 3,
+        "prompt": "FAST pelvis: fluid pocket behind bladder.",
+        "targetWord": "FAST",
+        "target_img": "images/cards/local/3_target_Ultrasound_Scan_ND_0126112316_1129461.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/3_target_Ultrasound_Scan_ND_0126112316_1129461.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Bladder",
+            "Pelvis",
+            "Douglas",
+            "Fluid"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/8/80/Ultrasound_Scan_ND_0126112316_1129461.png"
+    },
+    {
+        "id": 4,
+        "prompt": "Subxiphoid: anechoic fluid encircling heart.",
+        "targetWord": "Subxiphoid",
+        "target_img": "images/cards/local/4_target_PericardialeffusionUS.PNG",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/4_target_PericardialeffusionUS.PNG",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Pericardial",
+            "Effusion",
+            "Tamponade"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/a/a2/PericardialeffusionUS.PNG"
+    },
+    {
+        "id": 5,
+        "prompt": "Normal parasternal long‑axis view.",
+        "targetWord": "Normal parasternal long‑axis view.",
+        "target_img": "images/cards/local/5_target_Echo_heart_parasternal_long_axis__CardioNetworks_ECHOpedia_.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/5_target_Echo_heart_parasternal_long_axis__CardioNetworks_ECHOpedia_.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Parasternal",
+            "Long",
+            "Axis"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Echo_heart_parasternal_long_axis_%28CardioNetworks_ECHOpedia%29.jpg"
+    },
+    {
+        "id": 6,
+        "prompt": "Apical four‑chamber window (all four chambers).",
+        "targetWord": "Apical four‑chamber window (all four chambers).",
+        "target_img": "images/cards/local/6_target_Apical_4_chamber_view.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/6_target_Apical_4_chamber_view.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Apical",
+            "Four",
+            "Chamber"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Apical_4_chamber_view.png"
+    },
+    {
+        "id": 7,
+        "prompt": "IVC long axis—>50 % collapse.",
+        "targetWord": "IVC",
+        "target_img": "images/cards/local/7_target_Inferior_vena_cava_ultrasound.gif",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/7_target_Inferior_vena_cava_ultrasound.gif",
+        "local_probe_img": null,
+        "tabooWords": [
+            "IVC",
+            "Collapse",
+            "Volume"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/9/95/Inferior_vena_cava_ultrasound.gif"
+    },
+    {
+        "id": 8,
+        "prompt": "M‑mode \"barcode\" sign.",
+        "targetWord": "M‑mode \"barcode\" sign.",
+        "target_img": "images/cards/local/8_target_Barcode_sign_M_mode_pneumothorax.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/8_target_Barcode_sign_M_mode_pneumothorax.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Pneumothorax",
+            "Sliding",
+            "Pleura"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Barcode_sign_M_mode_pneumothorax.png"
+    },
+    {
+        "id": 9,
+        "prompt": "Diffuse B‑lines from pleura.",
+        "targetWord": "Diffuse B‑lines from pleura.",
+        "target_img": "images/cards/local/9_target_B_lines_on_a_lung_ultrasound_of_a_patient_with_fibrosis.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/9_target_B_lines_on_a_lung_ultrasound_of_a_patient_with_fibrosis.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "B‑lines",
+            "Edema",
+            "CHF"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/0/0c/B_lines_on_a_lung_ultrasound_of_a_patient_with_fibrosis.jpg"
+    },
+    {
+        "id": 10,
+        "prompt": "Pleural effusion—\"jelly‑fish\" lung.",
+        "targetWord": "Pleural effusion",
+        "target_img": "images/cards/local/10_target_Pleural_effusion_with_jellyfish_sign.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/10_target_Pleural_effusion_with_jellyfish_sign.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Effusion",
+            "Fluid",
+            "Chest"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Pleural_effusion_with_jellyfish_sign.png"
+    },
+    {
+        "id": 11,
+        "prompt": "Lung consolidation with air bronchograms.",
+        "targetWord": "Consolidation",
+        "target_img": "images/cards/local/11_target_Lung_ultrasound_pneumonia_consolidation.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/11_target_Lung_ultrasound_pneumonia_consolidation.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Consolidation",
+            "Bronchogram",
+            "Pneumonia"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/2/25/Lung_ultrasound_pneumonia_consolidation.png"
+    },
+    {
+        "id": 12,
+        "prompt": "Transverse abdominal aortic aneurysm (≥ 5 cm).",
+        "targetWord": "Transverse abdominal aortic aneurysm (≥ 5 cm).",
+        "target_img": "images/cards/local/12_target_Ultrasonography_of_abdominal_aortic_aneurysm_in_axial_plane.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/12_target_Ultrasonography_of_abdominal_aortic_aneurysm_in_axial_plane.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Aorta",
+            "AAA",
+            "Dissection"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Ultrasonography_of_abdominal_aortic_aneurysm_in_axial_plane.jpg"
+    },
+    {
+        "id": 13,
+        "prompt": "Common femoral vein DVT—non‑compressible.",
+        "targetWord": "Common femoral vein DVT—non‑compressible.",
+        "target_img": "images/cards/local/13_target_Ultrasonography_of_deep_vein_thrombosis_of_the_femoral_vein_-annotated.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/13_target_Ultrasonography_of_deep_vein_thrombosis_of_the_femoral_vein_-annotated.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "DVT",
+            "Femoral",
+            "Thrombus"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/6/63/Ultrasonography_of_deep_vein_thrombosis_of_the_femoral_vein_-annotated.jpg"
+    },
+    {
+        "id": 14,
+        "prompt": "Popliteal vein DVT (long axis).",
+        "targetWord": "Popliteal vein DVT (long axis).",
+        "target_img": "images/cards/local/14_target_Popliteal_vein_thrombosis_ultrasound.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/14_target_Popliteal_vein_thrombosis_ultrasound.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Popliteal",
+            "DVT",
+            "Thrombus"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Popliteal_vein_thrombosis_ultrasound.jpg"
+    },
+    {
+        "id": 15,
+        "prompt": "Femoral nerve block: nerve lateral to artery.",
+        "targetWord": "Femoral nerve block",
+        "target_img": "images/cards/local/15_target_Fermoral_nerve_block.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/15_target_Fermoral_nerve_block.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Femoral",
+            "Groin",
+            "Nerve"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/9/99/Fermoral_nerve_block.jpg"
+    },
+    {
+        "id": 16,
+        "prompt": "Interscalene block: plexus roots between scalenes.",
+        "targetWord": "Interscalene block",
+        "target_img": "images/cards/local/16_target_Brachial_plexus_ultrasound_C5_C6_roots.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/16_target_Brachial_plexus_ultrasound_C5_C6_roots.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Interscalene",
+            "Plexus",
+            "Roots"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/8/89/Brachial_plexus_ultrasound_C5_C6_roots.png"
+    },
+    {
+        "id": 17,
+        "prompt": "Adductor‑canal (saphenous) block.",
+        "targetWord": "Adductor‑canal (saphenous) block.",
+        "target_img": "images/cards/local/17_target_Adductor_canal.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/17_target_Adductor_canal.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Adductor",
+            "Canal",
+            "Saphenous"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Adductor_canal.png"
+    },
+    {
+        "id": 18,
+        "prompt": "Piriformis/sciatic injection view.",
+        "targetWord": "Piriformis/sciatic injection view.",
+        "target_img": "images/cards/local/18_target_Piriformis_ultrasound_injection.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/18_target_Piriformis_ultrasound_injection.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Piriformis",
+            "Sciatic",
+            "Block"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Piriformis_ultrasound_injection.png"
+    },
+    {
+        "id": 19,
+        "prompt": "Soft‑tissue abscess with posterior enhancement.",
+        "targetWord": "Abscess",
+        "target_img": "images/cards/local/19_target_Soft_tissue_abscess_ultrasound.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/19_target_Soft_tissue_abscess_ultrasound.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Abscess",
+            "Pus",
+            "Cellulitis"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/8/89/Soft_tissue_abscess_ultrasound.png"
+    },
+    {
+        "id": 20,
+        "prompt": "Early intra‑uterine pregnancy (gestational sac + yolk).",
+        "targetWord": "Early intra‑uterine pregnancy (gestational sac + yolk).",
+        "target_img": "images/cards/local/20_target_Ultrasound_gestational_sac.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/20_target_Ultrasound_gestational_sac.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Pregnancy",
+            "Gestational",
+            "Uterus"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/5/59/Ultrasound_gestational_sac.png"
+    },
+    {
+        "id": 21,
+        "prompt": "Ectopic: empty uterus & pelvic fluid.",
+        "targetWord": "Pelvic",
+        "target_img": "images/cards/local/21_target_Ectopic_pregnancy_ultrasound.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/21_target_Ectopic_pregnancy_ultrasound.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Ectopic",
+            "Tubal",
+            "Rupture"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Ectopic_pregnancy_ultrasound.png"
+    },
+    {
+        "id": 22,
+        "prompt": "Retinal detachment—flapping membrane.",
+        "targetWord": "Retinal detachment",
+        "target_img": "images/cards/local/22_target_Retinal_detachment_ultrasound.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/22_target_Retinal_detachment_ultrasound.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Retina",
+            "Detach",
+            "Eye"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/1/19/Retinal_detachment_ultrasound.jpg"
+    },
+    {
+        "id": 23,
+        "prompt": "Optic‑nerve sheath > 5 mm (ICP).",
+        "targetWord": "Optic‑nerve sheath > 5 mm (ICP).",
+        "target_img": "images/cards/local/23_target_Optic_nerve_sheath_dilation_ultrasound.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/23_target_Optic_nerve_sheath_dilation_ultrasound.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Optic",
+            "Sheath",
+            "Pressure"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Optic_nerve_sheath_dilation_ultrasound.png"
+    },
+    {
+        "id": 24,
+        "prompt": "Gallstones with posterior shadow.",
+        "targetWord": "Gallstones with posterior shadow.",
+        "target_img": "images/cards/local/24_target_Ultrasound_of_gall_bladder_with_calculus.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/24_target_Ultrasound_of_gall_bladder_with_calculus.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Gallbladder",
+            "Stone",
+            "GB"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Ultrasound_of_gall_bladder_with_calculus.jpg"
+    },
+    {
+        "id": 25,
+        "prompt": "Moderate hydronephrosis (dilated calyces).",
+        "targetWord": "Hydronephrosis",
+        "target_img": "images/cards/local/25_target_Ultrasound_of_right_kidney_moderate_hydronephrosis.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/25_target_Ultrasound_of_right_kidney_moderate_hydronephrosis.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Hydronephrosis",
+            "Obstruction"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Ultrasound_of_right_kidney_moderate_hydronephrosis.jpg"
+    },
+    {
+        "id": 26,
+        "prompt": "Renal stone + hydronephrosis.",
+        "targetWord": "Hydronephrosis",
+        "target_img": "images/cards/local/26_target_Ultrasound_of_nephronia_and_renal_stone_left_kidney.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/26_target_Ultrasound_of_nephronia_and_renal_stone_left_kidney.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Stone",
+            "Renal",
+            "Calculus"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Ultrasound_of_nephronia_and_renal_stone_left_kidney.jpg"
+    },
+    {
+        "id": 27,
+        "prompt": "Ascites pocket for paracentesis.",
+        "targetWord": "Paracentesis",
+        "target_img": "images/cards/local/27_target_Ascites_ultrasound_2.JPG",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/27_target_Ascites_ultrasound_2.JPG",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Ascites",
+            "Paracentesis",
+            "Fluid"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Ascites_ultrasound_2.JPG"
+    },
+    {
+        "id": 28,
+        "prompt": "Large pleural effusion (static).",
+        "targetWord": "Pleural effusion",
+        "target_img": "images/cards/local/28_target_Pleural_effusion_2.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/28_target_Pleural_effusion_2.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Thoracentesis",
+            "Effusion",
+            "Drain"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Pleural_effusion_2.jpg"
+    },
+    {
+        "id": 29,
+        "prompt": "In‑plane needle visualised to target.",
+        "targetWord": "In‑plane needle visualised to target.",
+        "target_img": "images/cards/local/29_target_In_plane_needle_ultrasound.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/29_target_In_plane_needle_ultrasound.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Needle",
+            "Guide",
+            "Echogenic"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/3/3e/In_plane_needle_ultrasound.png"
+    },
+    {
+        "id": 30,
+        "prompt": "IJ short‑axis: vein & artery before cannulation.",
+        "targetWord": "IJ short‑axis",
+        "target_img": "images/cards/local/30_target_Ultrasound_showing_right_IJV_narrowing_lower_neck_at_the_lower_neck_due_to_compression_by_adjacent_neck_mass.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/30_target_Ultrasound_showing_right_IJV_narrowing_lower_neck_at_the_lower_neck_due_to_compression_by_adjacent_neck_mass.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Central",
+            "Line",
+            "Vein"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/2/28/Ultrasound_showing_right_IJV_narrowing_lower_neck_at_the_lower_neck_due_to_compression_by_adjacent_neck_mass.jpg"
+    },
+    {
+        "id": 31,
+        "prompt": "Popliteal sciatic bifurcation for block.",
+        "targetWord": "Popliteal sciatic bifurcation for block.",
+        "target_img": "images/cards/local/31_target_Popliteal_sciatic_ultrasound.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/31_target_Popliteal_sciatic_ultrasound.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Sciatic",
+            "Popliteal",
+            "Block"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Popliteal_sciatic_ultrasound.png"
+    },
+    {
+        "id": 32,
+        "prompt": "PLAX with large effusion & diastolic RV collapse.",
+        "targetWord": "PLAX",
+        "target_img": "images/cards/local/32_target_PLAX_Mmode.jpg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/32_target_PLAX_Mmode.jpg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "RV",
+            "Collapse",
+            "PLAX"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/5/54/PLAX_Mmode.jpg"
+    },
+    {
+        "id": 33,
+        "prompt": "Apical 4‑chamber: RV dilation in PE.",
+        "targetWord": "Apical 4‑chamber",
+        "target_img": "images/cards/local/33_target_A4C_RV_dilation.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/33_target_A4C_RV_dilation.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "McConnell",
+            "PE",
+            "RV"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/0/0a/A4C_RV_dilation.png"
+    },
+    {
+        "id": 34,
+        "prompt": "RUSH exam diagram—pump, tank, pipes.",
+        "targetWord": "RUSH exam diagram—pump, tank, pipes.",
+        "target_img": "images/cards/local/34_target_Focused_cardiac_ultrasound_views.svg",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/34_target_Focused_cardiac_ultrasound_views.svg",
+        "local_probe_img": null,
+        "tabooWords": [
+            "RUSH",
+            "Shock",
+            "Protocol"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Focused_cardiac_ultrasound_views.svg"
+    },
+    {
+        "id": 35,
+        "prompt": "Lung point (transition of sliding).",
+        "targetWord": "Lung point",
+        "target_img": "images/cards/local/35_target_Lung_point_static_ultrasound.png",
+        "probe_img": null,
+        "local_target_img": "images/cards/local/35_target_Lung_point_static_ultrasound.png",
+        "local_probe_img": null,
+        "tabooWords": [
+            "Lung",
+            "Point",
+            "Sliding"
+        ],
+        "remote_target_img": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Lung_point_static_ultrasound.png"
+    }
+];
+
+// Example of how to use:
+// console.log(tabooCards[0].prompt);
+// console.log(tabooCards[0].targetWord);
+// console.log(tabooCards[0].tabooWords);
+// console.log(tabooCards[0].remote_target_img);
+
+// Export for Node.js environments
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { tabooCards };
+} 
