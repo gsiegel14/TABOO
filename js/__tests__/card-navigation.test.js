@@ -66,6 +66,11 @@ describe('Card Navigation Tests', () => {
     document.getElementById('card-probe-img').src = '';
   });
 
+  beforeEach(() => {
+    // Reset currentCardIndex before each test
+    global.currentCardIndex = 0;
+  });
+
   test('Next button advances to next card', () => {
     console.log('Testing next button navigation');
     

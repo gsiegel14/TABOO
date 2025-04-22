@@ -360,29 +360,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Card navigation
-        prevCardBtn.addEventListener('click', function(e) {
+        const handlePrevCard = (e) => {
             e.preventDefault();
             e.stopPropagation();
+            console.log('Previous button clicked, current index:', currentCardIndex);
             let newIndex = currentCardIndex - 1;
             if (newIndex < 0) {
                 newIndex = tabooCards.length - 1;
             }
+            currentCardIndex = newIndex;
             displayCard(newIndex);
             playSound('flip');
-            console.log('Previous button clicked, new index:', newIndex);
-        });
-        
-        nextCardBtn.addEventListener('click', function(e) {
+            console.log('Previous button - new index:', newIndex);
+        };
+
+        const handleNextCard = (e) => {
             e.preventDefault();
             e.stopPropagation();
+            console.log('Next button clicked, current index:', currentCardIndex);
             let newIndex = currentCardIndex + 1;
             if (newIndex >= tabooCards.length) {
                 newIndex = 0;
             }
+            currentCardIndex = newIndex;
             displayCard(newIndex);
             playSound('flip');
-            console.log('Next button clicked, new index:', newIndex);
-        });
+            console.log('Next button - new index:', newIndex);
+        };
+
+        prevCardBtn.addEventListener('click', handlePrevCard);
+        nextCardBtn.addEventListener('click', handleNextCard);
 
         // Add button hover effects
         [prevCardBtn, nextCardBtn].forEach(btn => {
