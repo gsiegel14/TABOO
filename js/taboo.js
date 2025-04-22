@@ -176,15 +176,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Display a card
     function displayCard(index) {
-        // Ensure index is within bounds and update currentCardIndex
-        if (index < 0) {
-            index = tabooCards.length - 1;
-        } else if (index >= tabooCards.length) {
-            index = 0;
-        }
+        // Validate and set the current index
         currentCardIndex = index;
+        
+        // Ensure we have valid cards data
+        if (!tabooCards || !tabooCards.length) {
+            console.error('No cards data available');
+            return;
+        }
 
         const card = tabooCards[currentCardIndex];
+        if (!card) {
+            console.error('Invalid card index:', currentCardIndex);
+            return;
+        }
 
         // Add animation class
         tabooCardElement.classList.add('animating');
@@ -354,12 +359,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Card navigation
-        prevCardBtn.addEventListener('click', () => {
-            displayCard(currentCardIndex - 1);
+        prevCardBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            let newIndex = currentCardIndex - 1;
+            if (newIndex < 0) newIndex = tabooCards.length - 1;
+            displayCard(newIndex);
             playSound('flip');
         });
-        nextCardBtn.addEventListener('click', () => {
-            displayCard(currentCardIndex + 1);
+        
+        nextCardBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            let newIndex = currentCardIndex + 1;
+            if (newIndex >= tabooCards.length) newIndex = 0;
+            displayCard(newIndex);
             playSound('flip');
         });
 
