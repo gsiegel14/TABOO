@@ -6,6 +6,60 @@ const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
 
+require('../card-data.js');
+
+describe('Card Image Tests', () => {
+  let imageErrors = [];
+
+  beforeAll(() => {
+    global.window = {
+      tabooCards: require('../card-data.js').tabooCards
+    };
+  });
+
+  test('All card images exist and are accessible', () => {
+    window.tabooCards.forEach(card => {
+      if (card.target_img) {
+        const imgPath = path.resolve(__dirname, '../../', card.target_img);
+        const exists = fs.existsSync(imgPath);
+        expect(exists).toBeTruthy();
+      }
+
+      if (card.probe_img) {
+        const imgPath = path.resolve(__dirname, '../../', card.probe_img);
+        const exists = fs.existsSync(imgPath);
+        expect(exists).toBeTruthy();
+      }
+    });
+  });
+
+  test('Audio files exist', () => {
+    const audioFiles = [
+      'sounds/beep-short.mp3',
+      'sounds/beep-long.mp3',
+      'sounds/correct.mp3',
+      'sounds/wrong.mp3',
+      'sounds/flip.mp3'
+    ];
+
+    audioFiles.forEach(file => {
+      const exists = fs.existsSync(path.resolve(__dirname, '../../', file));
+      expect(exists).toBeTruthy();
+    });
+  });
+
+  test('Card data structure is valid', () => {
+    window.tabooCards.forEach((card, index) => {
+      expect(card).toHaveProperty('id');
+      expect(card).toHaveProperty('target_img');
+      expect(card).toHaveProperty('probe_img');
+      expect(typeof card.id).toBe('number');
+      expect(typeof card.target_img).toBe('string');
+      expect(typeof card.probe_img).toBe('string');
+    });
+  });
+});
+
 describe('Taboo Game Tests', () => {
   beforeAll(() => {
     global.window = new JSDOM().window;
