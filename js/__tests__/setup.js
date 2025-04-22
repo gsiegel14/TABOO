@@ -1,32 +1,40 @@
 
-require('@testing-library/jest-dom');
-const fs = require('fs');
-const path = require('path');
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 
+// Mock browser audio
+class AudioMock {
+  constructor() {
+    this.volume = 1;
+    this.currentTime = 0;
+    this.preload = 'auto';
+    this.muted = false;
+  }
+  
+  play() {
+    return Promise.resolve();
+  }
+  
+  pause() {}
+}
+
+global.Audio = AudioMock;
+
+// Mock browser functions and objects
 global.window = {
-  location: {
-    search: ''
-  },
-  tabooCards: require('../card-data.js').tabooCards,
+  audioUnlocked: false,
+  tabooCards: [],
   ImageProxy: {
     loadImage: jest.fn((img, src, fallback, onSuccess) => {
-      // Always succeed for test purposes
       onSuccess();
       return true;
     })
-  },
-  playSound: jest.fn()
+  }
 };
 
 global.document = {
-  getElementById: jest.fn().mockReturnValue({
-    style: {},
-    classList: {
-      add: jest.fn(),
-      remove: jest.fn()
-    }
-  }),
-  createElement: jest.fn().mockReturnValue({
+  createElement: () => ({
     style: {},
     classList: {
       add: jest.fn(),
@@ -35,21 +43,8 @@ global.document = {
   })
 };
 
-global.Image = class {
-  constructor() {
-    setTimeout(() => this.onload && this.onload());
-  }
+// Mock Fancybox
+global.Fancybox = {
+  defaults: {},
+  show: jest.fn()
 };
-
-global.Audio = class {
-  constructor() {
-    setTimeout(() => this.oncanplaythrough && this.oncanplaythrough());
-  }
-  play() { return Promise.resolve(); }
-};
-
-// Mock file system for image tests
-jest.mock('fs', () => ({
-  existsSync: jest.fn().mockReturnValue(true),
-  readFileSync: jest.fn()
-}));
