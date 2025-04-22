@@ -59,18 +59,28 @@ describe('Taboo Game Tests', () => {
       
       window.tabooCards.forEach(card => {
         if (card.target_img) {
-          const imgPath = path.resolve(__dirname, '../../', card.target_img);
-          const exists = fs.existsSync(imgPath);
+          const paths = [
+            card.target_img,
+            card.local_target_img,
+            `images/cards/local/${card.id}_target_${path.basename(card.target_img)}`
+          ].filter(Boolean);
+
+          const exists = paths.some(p => fs.existsSync(path.resolve(__dirname, '../../', p)));
           if (!exists) {
-            imageErrors.push(`Card ${card.id}: Missing target image at ${card.target_img}`);
+            imageErrors.push(`Card ${card.id}: Missing target image. Tried paths: ${paths.join(', ')}`);
           }
         }
         
         if (card.probe_img) {
-          const imgPath = path.resolve(__dirname, '../../', card.probe_img);
-          const exists = fs.existsSync(imgPath);
+          const paths = [
+            card.probe_img,
+            card.local_probe_img,
+            `images/cards/local/${card.id}_probe_${path.basename(card.probe_img)}`
+          ].filter(Boolean);
+
+          const exists = paths.some(p => fs.existsSync(path.resolve(__dirname, '../../', p)));
           if (!exists) {
-            imageErrors.push(`Card ${card.id}: Missing probe image at ${card.probe_img}`);
+            imageErrors.push(`Card ${card.id}: Missing probe image. Tried paths: ${paths.join(', ')}`);
           }
         }
       });
