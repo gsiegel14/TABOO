@@ -110,17 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize Fancybox
         initFancybox();
 
-        // Wait for tabooCards to be available
-        if (typeof window.tabooCards === 'undefined' || !Array.isArray(window.tabooCards)) {
+        // Check for tabooCards from card-data.js
+        if (typeof tabooCards === 'undefined' || !Array.isArray(tabooCards)) {
             console.error('Card data not loaded properly');
-            // Create a placeholder card if data is missing
-            window.tabooCards = [{
-                id: 1,
-                targetWord: "Loading...",
-                tabooWords: ["Please refresh", "if this persists"],
-                prompt: "Loading game data..."
-            }];
+            return;
         }
+        window.tabooCards = tabooCards;
 
         // Initialize current index
         window.currentCardIndex = 0;
