@@ -245,8 +245,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Update target image
         const targetImgEl = document.getElementById('card-target-img');
-        const targetContainer = targetImgEl.closest('.image-container');
-        const targetWrapper = targetImgEl.closest('.image-wrapper');
+        const targetContainer = targetImgEl?.closest('.image-container');
+        const targetWrapper = targetImgEl?.closest('.image-wrapper');
 
         if (card.target_img) {
             // Use ImageProxy to load the image with fallbacks
@@ -260,20 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (targetContainer) targetContainer.style.display = 'block';
 
                     // Setup Fancybox for this image
-                    setupFancybox(targetImgEl, card.target_img, card.targetWord);
-
-                    // If source_url exists, create and load a secondary image
-                    if (card.source_url && card.source_url !== card.target_img && card.source_url !== card.local_target_img) {
-                        ImageProxy.createSecondaryImage(targetImgEl, card.source_url);
-                    }
-
-                    // If remote_target_img exists, create and load a remote image
-                    if (card.remote_target_img && 
-                        card.remote_target_img !== card.target_img && 
-                        card.remote_target_img !== card.local_target_img &&
-                        card.remote_target_img !== card.source_url) {
-                        ImageProxy.createRemoteImage(targetImgEl, card.remote_target_img);
-                    }
+                    if (targetImgEl) setupFancybox(targetImgEl, card.target_img, card.targetWord);
                 },
                 () => {
                     // Error callback after all attempts
@@ -284,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
             );
         } else {
             // No image URL provided
-            targetImgEl.src = 'images/cards/placeholder.svg';
+            if (targetImgEl) targetImgEl.src = 'images/cards/placeholder.svg';
             if (targetContainer) targetContainer.style.display = 'none';
         }
 
@@ -293,7 +280,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const probeContainer = probeImgEl?.closest('.image-container');
         const probeWrapper = probeImgEl?.closest('.image-wrapper');
 
-        if (probeImgEl && card.probe_img) {
+        // Immediately hide the probe container if card.probe_img is not a valid string
+        if (!card.probe_img || typeof card.probe_img !== 'string') {
+            if (probeContainer) probeContainer.style.display = 'none';
+            if (probeImgEl) probeImgEl.src = ''; // Clear source to prevent any loading attempts
+        }
+        // Only attempt to load if we have a valid probe image URL
+        else if (probeImgEl && card.probe_img && typeof card.probe_img === 'string') {
             // Use ImageProxy to load the image with fallbacks
             ImageProxy.loadImage(
                 probeImgEl, 
@@ -305,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (probeContainer) probeContainer.style.display = 'block';
 
                     // Setup Fancybox for this image
-                    setupFancybox(probeImgEl, card.probe_img, "Probe Position");
+                    if (probeImgEl) setupFancybox(probeImgEl, card.probe_img, "Probe Position");
                 },
                 () => {
                     // Error callback after all attempts
@@ -313,10 +306,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (probeContainer) probeContainer.style.display = 'none';
                 }
             );
-        } else if (probeImgEl) {
-            // No image URL provided
-            probeImgEl.src = 'images/cards/placeholder.svg';
-            if (probeContainer) probeContainer.style.display = 'none';
         }
 
         // Show or hide the card-images container based on whether any images are displayed
@@ -374,133 +363,27 @@ document.addEventListener('DOMContentLoaded', function() {
             playSound('wrong');
         });
 
-        // Card navigation
-        function handlePrevCard(event) {
-            if (event) event.preventDefault();
-            console.log('Previous button clicked, current index:', window.currentCardIndex);
-
-            if (!window.tabooCards || !window.tabooCards.length) {
-                console.error('No cards available for navigation');
-                return;
-            }
-
-            let newIndex = window.currentCardIndex - 1;
-            if (newIndex < 0) {
-                newIndex = window.tabooCards.length - 1;
-            }
-            console.log('Previous button - new index:', newIndex);
-
-            // First update current index
-            window.currentCardIndex = newIndex;
-            currentCardIndex = newIndex;
-            // Then display the card at that index
-            displayCard(newIndex);
-
-            try {
-                playSound('flip');
-            } catch (e) {
-                console.log('Sound play error:', e);
-            }
-
-            return false; // Prevent default
-        }
-
-        function handleNextCard(event) {
-            if (event) event.preventDefault();
-            console.log('Next button clicked, current index:', window.currentCardIndex);
-
-            if (!window.tabooCards || !window.tabooCards.length) {
-                console.error('No cards available for navigation');
-                return;
-            }
-
-            let newIndex = window.currentCardIndex + 1;
-            if (newIndex >= window.tabooCards.length) {
-                newIndex = 0;
-            }
-            console.log('Next button - new index:', newIndex);
-
-            // First update current index
-            window.currentCardIndex = newIndex;
-            currentCardIndex = newIndex;
-            // Then display the card at that index
-            displayCard(newIndex);
-
-            try {
-                playSound('flip');
-            } catch (e) {
-                console.log('Sound play error:', e);
-            }
-
-            return false; // Prevent default
-        }
-
-        // Create global navigation functions for testing
-        window.nextCard = handleNextCard;
-        window.prevCard = handlePrevCard;
-
-        // Clear existing listeners and create fresh ones
-        if (prevCardBtn) {
-            prevCardBtn.onclick = null;
-            // Add multiple event handlers for reliability
-            prevCardBtn.onclick = handlePrevCard;
-            prevCardBtn.addEventListener('click', handlePrevCard);
-        }
-
-        if (nextCardBtn) {
-            nextCardBtn.onclick = null;
-            // Add multiple event handlers for reliability
-            nextCardBtn.onclick = handleNextCard;
-            nextCardBtn.addEventListener('click', handleNextCard);
-        }
-
-        // Add click listeners directly for maximum reliability
-        console.log('Adding direct click handlers to buttons');
-        document.getElementById('prev-card').addEventListener('click', function() {
-            console.log('Direct prev click handler triggered');
-            handlePrevCard();
-        });
-
-        document.getElementById('next-card').addEventListener('click', function() {
-            console.log('Direct next click handler triggered');
-            handleNextCard();
-        });
-
-        // Add keyboard navigation for reliability
-        document.removeEventListener('keydown', handleKeyPress);
+        // Keyboard controls (ensure this isn't attached multiple times either)
+        // A simple way is to remove before adding
+        document.removeEventListener('keydown', handleKeyPress); 
         document.addEventListener('keydown', handleKeyPress);
 
-        console.log('Card navigation handlers attached');
-
-        // Add direct button methods
-        nextCardBtn.nextCard = handleNextCard;
-        prevCardBtn.prevCard = handlePrevCard;
-
-        // Add button hover effects
-        [prevCardBtn, nextCardBtn].forEach(btn => {
-            btn.style.cursor = 'pointer';
-            btn.addEventListener('mouseenter', () => btn.style.opacity = '0.8');
-            btn.addEventListener('mouseleave', () => btn.style.opacity = '1');
-        });
-
-        // Keyboard controls
-        document.addEventListener('keydown', handleKeyPress);
-
-        // Toggle flip on card click
-        tabooCardElement.addEventListener('click', () => {
+        // Toggle flip on card click (ensure only one listener)
+        // If tabooCardElement could be re-created, this might need removal too
+        const cardClickHandler = () => {
             tabooCardElement.classList.toggle('flipped');
-        });
+            // Consider playing flip sound here too if desired
+        };
+        if (tabooCardElement._cardClickHandler) {
+             tabooCardElement.removeEventListener('click', tabooCardElement._cardClickHandler);
+        }
+        tabooCardElement.addEventListener('click', cardClickHandler);
+        tabooCardElement._cardClickHandler = cardClickHandler;
     }
 
     // Handle keyboard presses
     function handleKeyPress(event) {
         switch (event.key) {
-            case 'ArrowLeft':
-                displayCard(currentCardIndex - 1);
-                break;
-            case 'ArrowRight':
-                displayCard(currentCardIndex + 1);
-                break;
             case ' ':
                 // Space bar toggles timer
                 if (isTimerRunning) {
@@ -783,6 +666,9 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         }
     }
+
+    // Expose displayCard function globally for card navigation
+    window.displayCard = displayCard;
 
     // Initialize the game when DOM is loaded
     initGame();

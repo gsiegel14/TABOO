@@ -245,19 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // Setup Fancybox for this image
                     setupFancybox(targetImgEl, card.target_img, card.targetWord);
-
-                    // If source_url exists, create and load a secondary image
-                    if (card.source_url && card.source_url !== card.target_img && card.source_url !== card.local_target_img) {
-                        ImageProxy.createSecondaryImage(targetImgEl, card.source_url);
-                    }
-
-                    // If remote_target_img exists, create and load a remote image
-                    if (card.remote_target_img && 
-                        card.remote_target_img !== card.target_img && 
-                        card.remote_target_img !== card.local_target_img &&
-                        card.remote_target_img !== card.source_url) {
-                        ImageProxy.createRemoteImage(targetImgEl, card.remote_target_img);
-                    }
                 },
                 () => {
                     // Error callback after all attempts
