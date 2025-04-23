@@ -31,7 +31,10 @@ const ImageProxy = {
      * @param {Function} onAllFailed - Callback for when all loading attempts fail
      * @param {string|null} remoteFallbackUrl - Optional remote fallback URL
      */
-    static loadImage(imgElement, primaryUrl, localFallbackUrl = null, onSuccess = null, onAllFailed = null, remoteFallbackUrl = null) {
+    loadImage(imgElement, primaryUrl, localFallbackUrl = null, onSuccess = null, onAllFailed = null, remoteFallbackUrl = null) {
+        // Log the attempt for debugging
+        console.log(`[ImageProxy] Attempting to load image for element: ${imgElement?.id || 'unnamed'}`);
+        
         // Check and fix path with missing leading slash
         const fixPath = (path) => {
             if (path && !path.startsWith('/') && !path.startsWith('http')) {
@@ -44,20 +47,22 @@ const ImageProxy = {
         };
 
         // Store original URLs and fix paths
-        const urls = [fixPath(primaryUrl)];
+        const urls = [];
+        if (primaryUrl) urls.push(fixPath(primaryUrl));
         if (localFallbackUrl) urls.push(fixPath(localFallbackUrl));
         if (remoteFallbackUrl) urls.push(fixPath(remoteFallbackUrl));
 
-        // Add additional fallbacks for probe image
-        if (primaryUrl && primaryUrl.includes('probe')) {
-            // Try various path combinations for the probe image
-            if (primaryUrl.includes('local')) {
-                urls.push(primaryUrl.replace('local/', ''));
+        // If we have no URLs to try, call the failure callback immediately
+        if (urls.length === 0) {
+            console.log('[ImageProxy] No valid URLs provided for image loading.');
+            if (typeof onAllFailed === 'function') {
+                onAllFailed();
             }
-            if (primaryUrl.startsWith('images/')) {
-                urls.push('/' + primaryUrl);
-            }
+            return;
         }
+
+        // Remove automatic probe image fallback paths - these should be explicitly provided in the card data
+        // if needed, not auto-generated based on patterns
 
         // Initialize attempt counter
         let attemptCount = 0;
@@ -90,7 +95,7 @@ const ImageProxy = {
 
                 // Call the onSuccess callback if provided
                 if (typeof onSuccess === 'function') {
-                    onSuccess();
+                    onSuccess(imgElement);
                 }
             };
 

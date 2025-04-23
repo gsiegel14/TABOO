@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taboo Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 22px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        .prompt {
+            font-size: 18px;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            line-height: 1.8;
+        }
+        .taboo-words {
+            margin: 15px 0;
+            font-style: italic;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .status {
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .card-image {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        #summary {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #e8f4f8;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Taboo Card Viewer</h1>
+    <div id="status"></div>
+    <div id="summary"></div>
+    <div id="card-list"></div>
+
+    <script>
+        // Load card data directly
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusEl = document.getElementById('status');
+            const summaryEl = document.getElementById('summary');
+            const cardListEl = document.getElementById('card-list');
+            
+            // Load the card data file
+            fetch('js/card-data.fixed.js')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load card data (${response.status})`);
+                    }
+                    return response.text();
+                })
+                .then(jsContent => {
+                    // Create a module-like scope to evaluate the JS
+                    const cardDataScript = document.createElement('script');
+                    cardDataScript.textContent = jsContent;
+                    document.head.appendChild(cardDataScript);
+                    
+                    // Check if tabooCards is defined
+                    if (typeof tabooCards === 'undefined') {
+                        throw new Error('tabooCards is not defined in the loaded file');
+                    }
+                    
+                    if (!Array.isArray(tabooCards)) {
+                        throw new Error('tabooCards is not an array');
+                    }
+                    
+                    // Display success message
+                    statusEl.innerHTML = '<div class="status success">✅ Card data loaded successfully: ' + tabooCards.length + ' cards found</div>';
+                    
+                    // Count cards with images
+                    const cardsWithLocalImages = tabooCards.filter(card => card.local_target_img && card.local_target_img.includes('images/cards/local/')).length;
+                    const cardsWithRemoteImages = tabooCards.filter(card => card.remote_target_img && card.remote_target_img.startsWith('http')).length;
+                    
+                    // Display summary
+                    summaryEl.innerHTML = 
+                        '<p><strong>Total cards:</strong> ' + tabooCards.length + '</p>' +
+                        '<p><strong>Cards with local images:</strong> ' + cardsWithLocalImages + '</p>' +
+                        '<p><strong>Cards with remote images:</strong> ' + cardsWithRemoteImages + '</p>';
+                    
+                    // Display all cards
+                    for (let i = 0; i < tabooCards.length; i++) {
+                        const card = tabooCards[i];
+                        const cardEl = document.createElement('div');
+                        cardEl.className = 'card';
+                        
+                        let imageHtml = '';
+                        // Prioritize local images
+                        if (card.local_target_img) {
+                            imageHtml = '<img src="' + card.local_target_img + '" alt="' + (card.targetWord || 'Card Image') + '" class="card-image">';
+                        } else if (card.remote_target_img) {
+                            // Only show remote as fallback
+                            imageHtml = '<p><em>Remote image available but not displayed</em></p>';
+                        }
+                        
+                        cardEl.innerHTML = 
+                            '<h3>' + (card.id || i+1) + '. ' + (card.targetWord || 'Untitled Card') + '</h3>' +
+                            '<div class="prompt"><strong>Prompt:</strong> ' + (card.prompt || 'No prompt available') + '</div>' +
+                            '<div class="taboo-words"><strong>Taboo Words:</strong> ' + (card.tabooWords ? card.tabooWords.join(', ') : 'None') + '</div>' +
+                            '<p><strong>Local Image:</strong> ' + (card.local_target_img || 'None') + '</p>' +
+                            imageHtml;
+                        
+                        cardListEl.appendChild(cardEl);
+                    }
+                })
+                .catch(error => {
+                    // Display error message
+                    statusEl.innerHTML = '<div class="status error">❌ Error: ' + error.message + '</div>';
+                    console.error('Error loading card data:', error);
+                    
+                    // Show more detailed error if possible
+                    summaryEl.innerHTML = '<h3>Error Details</h3><p>' + error.message + '</p>';
+                    if (error.stack) {
+                        summaryEl.innerHTML += '<pre>' + error.stack + '</pre>';
+                    }
+                });
+        });
+    </script>
+</body>
+</html> 

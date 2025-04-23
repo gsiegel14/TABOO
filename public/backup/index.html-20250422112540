@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     
@@ -22,21 +21,6 @@
     
     <!-- Fancybox CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-    
-    <!-- Additional styles for prompt -->
-    <style>
-        .card-prompt {
-            font-size: 1.2em;
-            line-height: 1.6;
-            padding: 15px;
-            margin: 15px 0;
-            background-color: #f8f9fa;
-            border-left: 4px solid #3498db;
-            border-radius: 4px;
-            font-weight: 500 !important;
-            color: #2c3e50;
-        }
-    </style>
     
     <!-- No-script fallback -->
     <noscript><link rel="stylesheet" href="html5up-phantom/assets/css/noscript.css" /></noscript>
@@ -133,13 +117,20 @@
                                     <h2 class="target-word" id="target-word">Loading...</h2>
                                 </div>
                                 <div class="card-body">
-                                    <p id="card-prompt" class="card-prompt"></p>
+                                    <p id="card-prompt" class="card-prompt" style="font-weight:bold; margin-bottom:1em;"></p>
                                     <div class="card-images">
                                         <div class="image-container">
                                             <h4 class="image-label">Target View</h4>
                                             <div class="image-wrapper">
                                                 <div class="image-loading-indicator">Loading...</div>
                                                 <img id="card-target-img" src="images/cards/placeholder.svg" alt="Target Ultrasound" style="border-radius:8px;">
+                                            </div>
+                                        </div>
+                                        <div class="image-container">
+                                            <h4 class="image-label">Probe Position</h4>
+                                            <div class="image-wrapper">
+                                                <div class="image-loading-indicator">Loading...</div>
+                                                <img id="card-probe-img" src="images/cards/placeholder.svg" alt="Probe Position" style="border-radius:8px;">
                                             </div>
                                         </div>
                                     </div>
@@ -264,12 +255,9 @@
     <script src="html5up-phantom/assets/js/menu-toggle.js"></script>
     
     <!-- Game JS - Note: Order matters for dependency resolution -->
+    <script src="js/card-data.js"></script>
     <script src="js/image-proxy.js"></script>
-    <script src="js/card-data.fixed.js"></script>
     <script src="js/taboo.js"></script>
-    
-    <!-- Card Navigation JS -->
-    <script src="js/card-navigation.js"></script>
     
     <!-- Fancybox JS -->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>

@@ -1,0 +1,44 @@
+{
+  "totalCards": 30,
+  "validUrls": 23,
+  "invalidUrls": 7,
+  "alternativesFound": 1,
+  "invalid": [
+    {
+      "id": 7,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Inferior_vena_cava_ultrasound.gif/640px-Inferior_vena_cava_ultrasound.gif"
+    },
+    {
+      "id": 14,
+      "url": "https://www.researchgate.net/publication/334892929/figure/fig4/AS:787447461990400@1564753513020/Ultrasound-image-for-infiltration-between-the-popliteal-artery-and-capsule-of-the.png"
+    },
+    {
+      "id": 16,
+      "url": "https://www.researchgate.net/publication/308174144/figure/fig3/AS:408177389654018@1474328481595/Sonographic-view-of-interscalene-brachial-plexus-block-with-conventional-approach.png"
+    },
+    {
+      "id": 20,
+      "url": "https://www.researchgate.net/publication/367813656/figure/fig2/AS:11431281116733636@1675302116999/Doppler-imaging-of-right-kidney-long-axis-demonstrating-absence-of-flow-in-the-dilated.jpg"
+    },
+    {
+      "id": 26,
+      "url": "https://www.researchgate.net/profile/Mathieu-Veyrat-2/publication/337882317/figure/fig1/AS:874483715940354@1585504573642/A-B-mode-ultrasound-scan-in-the-long-axis-of-the-left-carotid-bulb-hyperechoic.ppm"
+    },
+    {
+      "id": 27,
+      "url": "https://www.researchgate.net/publication/372033753/figure/fig2/AS:11431281171982927@1688411774672/Posterior-shoulder-ultrasound-demonstrating-anteriorly-dislocated-humeral-head-courtesy.png"
+    },
+    {
+      "id": 32,
+      "url": "https://www.researchgate.net/publication/352146471/figure/fig2/AS:11431281274663142@1725028617666/PENG-block-realization-Needle-approaching-the-psoas-tendon-represents-injection.tif"
+    }
+  ],
+  "alternatives": [
+    {
+      "id": 7,
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Inferior_vena_cava_ultrasound.gif/640px-Inferior_vena_cava_ultrasound.gif",
+      "alternativeUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/Inferior_vena_cava_ultrasound.gif",
+      "source": "custom"
+    }
+  ]
+}

@@ -1,60 +1,53 @@
-# CSS Reorganization
+# Taboo Game CSS Structure
 
-This directory contains a reorganized and streamlined version of the CSS files for the VEXUS project. The goal of this reorganization is to:
+This directory contains the CSS files for the Taboo Game application.
 
-1. Minimize code duplication
-2. Improve maintainability
-3. Enhance performance
-4. Provide a more logical structure
+## Overview
+
+The CSS structure has been optimized to reduce redundancy and improve maintainability:
+
+1. **Main CSS Files:**
+   - `taboo.css`: Main game-specific styles
+   - `main.css`: Imports necessary base, utilities, and layout styles
+
+2. **External Libraries (loaded via CDN):**
+   - Font Awesome 6.4.2
+   - Fancybox 5.0
 
 ## Directory Structure
 
-The CSS files are organized into the following directories:
+The CSS is organized into the following directories:
 
-- **base/**: Contains reset and typography styles that form the foundation of the site's styling.
-- **layout/**: Contains grid and layout-related styles.
-- **components/**: Contains styles for specific UI components like header, sidebar, forms, etc.
-- **responsive/**: Contains responsive design utilities and media queries.
+- **base/**: Base and reset styles
+  - `reset.css`: CSS reset for consistent browser styling
+  - `typography.css`: Typography styles
 
-## Main Files
+- **layout/**: Layout grid system
+  - `grid.css`: Layout grids and structure
 
-- **main.css**: The main stylesheet that imports all other CSS files in the correct order.
+- **utilities/**: Utility classes
+  - `vexus-colors.css`: Color utilities
 
-## Component Files
+- **responsive/**: Responsive design utilities
+  - `responsive.css`: Media queries and responsive adjustments
 
-- **header.css**: Styles for the site header and navigation.
-- **sidebar.css**: Styles for the sidebar menu.
-- **logo.css**: Styles for various logo presentations throughout the site.
-- **form.css**: Styles for form elements and controls.
-- **fancybox.css**: Enhanced styles for the Fancybox lightbox component.
+- **old-files/**: Archived files that are no longer used
 
-## Mobile Optimizations
+## Optimization Notes
 
-Mobile optimizations have been consolidated into the responsive.css file, which includes:
+The CSS has been optimized to:
 
-- Touch-friendly button sizes
-- Improved spacing for mobile devices
-- Optimized typography for smaller screens
-- Performance improvements for mobile devices
+1. **Remove Duplicate Files**: Eliminated duplicate CSS files between `css/` and `public/css/`
+2. **Remove Unused Components**: Moved unused component CSS to the archive folder
+3. **Reduce HTTP Requests**: Minimized the number of CSS imports
+4. **Clean Up Font Awesome**: Removed duplicate Font Awesome imports
+5. **Move Inline Styles**: Incorporated inline styles from HTML into taboo.css
 
 ## Usage
 
-To use these styles, include the main.css file and fontawesome in your HTML:
+In your HTML, include the two main CSS files:
 
 ```html
-<link rel="stylesheet" href="html5up-phantom/assets/css-new/main.css" />
-<link rel="stylesheet" href="html5up-phantom/assets/css/fontawesome-all.min.css" />
+<link rel="stylesheet" href="html5up-phantom/assets/css/main.css" />
+<link rel="stylesheet" href="css/taboo.css" />
 ```
-
-Note: The fontawesome-all.min.css file needs to be included separately as it's not imported by main.css.
-
-## Migration Notes
-
-This reorganization preserves all functionality from the original CSS files while eliminating redundancy and improving organization. The files have been structured to make future maintenance easier.
-
-Key improvements:
-- Consolidated mobile optimizations
-- Removed duplicate styles
-- Improved organization with a logical file structure
-- Enhanced performance through better CSS organization
-- Maintained backward compatibility with existing HTML

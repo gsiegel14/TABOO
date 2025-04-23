@@ -1,0 +1,175 @@
+/* 
+ * Image Gallery Base Styles
+ * Core variables and base styles for the gallery component
+ */
+
+:root {
+    /* Base Tag Properties */
+    --tag-size: 2.0em; /* Reduced size for smaller tag boxes */
+    --tag-padding: 0.3em;
+    --tag-border-radius: 3px; /* Slight rounding for more refined look */
+    --tag-font-size: 0.75em;
+    --tag-font-weight: 500;
+    --tag-letter-spacing: 0.5px;
+    --tag-text-transform: uppercase;
+    --tag-transition: all 0.2s ease;
+    
+    /* Base Tag Colors */
+    --tag-bg-color: #f5f5f5; /* Lighter grey background for refined look */
+    --tag-text-color: #444; /* Darker text for better contrast */
+    --tag-border-color: #e6e6e6;
+    --tag-border-width: 1px;
+    --tag-box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    
+    /* Tag States */
+    --tag-hover-bg-color: #ffffff;
+    --tag-hover-text-color: #222;
+    --tag-hover-border-color: #d0d0d0;
+    --tag-hover-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --tag-hover-transform: translateY(-2px);
+    
+    --tag-active-bg-color: #eef5fd;
+    --tag-active-text-color: #1976d2;
+    --tag-active-border-color: #1976d2;
+    --tag-active-box-shadow: 0 2px 5px rgba(25, 118, 210, 0.15);
+    
+    --tag-focus-outline: 2px solid #1976d2;
+    --tag-focus-outline-offset: 2px;
+    
+    /* Quality Tag Colors */
+    --tag-quality-high: #2e7d32; /* Green */
+    --tag-quality-high-bg: #f5f5f5; /* Lighter grey background */
+    --tag-quality-high-border: #e0e0e0;
+    
+    --tag-quality-medium: #f57c00; /* Orange */
+    --tag-quality-medium-bg: #f5f5f5; /* Lighter grey background */
+    --tag-quality-medium-border: #e0e0e0;
+    
+    --tag-quality-low: #c62828; /* Red */
+    --tag-quality-low-bg: #f5f5f5; /* Lighter grey background */
+    --tag-quality-low-border: #e0e0e0;
+    
+    /* Vein Type Tag Colors */
+    --tag-vein-hepatic: #1976d2; /* Blue */
+    --tag-vein-hepatic-bg: #f5f5f5; /* Lighter grey background */
+    --tag-vein-hepatic-border: #e0e0e0;
+    
+    --tag-vein-portal: #7b1fa2; /* Purple */
+    --tag-vein-portal-bg: #f5f5f5; /* Lighter grey background */
+    --tag-vein-portal-border: #e0e0e0;
+    
+    --tag-vein-renal: #00838f; /* Teal */
+    --tag-vein-renal-bg: #f5f5f5; /* Lighter grey background */
+    --tag-vein-renal-border: #e0e0e0;
+    
+    /* Waveform Tag Colors */
+    --tag-waveform-normal: #2e7d32; /* Green */
+    --tag-waveform-normal-bg: #f5f5f5; /* Lighter grey background */
+    --tag-waveform-normal-border: #e0e0e0;
+    
+    --tag-waveform-mild: #f57c00; /* Orange */
+    --tag-waveform-mild-bg: #f5f5f5; /* Lighter grey background */
+    --tag-waveform-mild-border: #e0e0e0;
+    
+    --tag-waveform-severe: #c62828; /* Red */
+    --tag-waveform-severe-bg: #f5f5f5; /* Lighter grey background */
+    --tag-waveform-severe-border: #e0e0e0;
+    
+    /* QA Tag Colors */
+    --tag-qa-yes: #2e7d32; /* Green */
+    --tag-qa-yes-bg: #f5f5f5; /* Lighter grey background */
+    --tag-qa-yes-border: #e0e0e0;
+    
+    --tag-qa-no: #757575; /* Grey */
+    --tag-qa-no-bg: #f5f5f5; /* Lighter grey background */
+    --tag-qa-no-border: #e0e0e0;
+    
+    /* Analysis Tag Colors */
+    --tag-analysis: #3949ab; /* Indigo */
+    --tag-analysis-bg: #f5f5f5; /* Lighter grey background */
+    --tag-analysis-border: #e0e0e0;
+    
+    /* Subtype Tag Colors */
+    --tag-subtype: #795548; /* Brown */
+    --tag-subtype-bg: #f5f5f5; /* Lighter grey background */
+    --tag-subtype-border: #e0e0e0;
+    
+    /* Dark Mode Colors */
+    --dark-tag-bg: #2a2a2a;
+    --dark-tag-text: #fff;
+    --dark-tag-border: #404040;
+    --dark-tag-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    
+    --dark-tag-hover-bg: #404040;
+    --dark-tag-hover-text: #fff;
+    --dark-tag-hover-border: #505050;
+    
+    --dark-tag-active-bg: #1a237e;
+    --dark-tag-active-text: #fff;
+    --dark-tag-active-border: #283593;
+}
+
+/* Base Tag Component */
+.tag {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
+    padding: var(--tag-padding);
+    border-radius: var(--tag-border-radius);
+    margin: 0.15em;
+    
+    /* Square dimensions - smaller size */
+    width: var(--tag-size);
+    height: var(--tag-size);
+    min-width: var(--tag-size);
+    min-height: var(--tag-size);
+    
+    /* Typography */
+    font-size: var(--tag-font-size);
+    font-weight: var(--tag-font-weight);
+    letter-spacing: var(--tag-letter-spacing);
+    text-transform: var(--tag-text-transform);
+    line-height: 1;
+    
+    /* Visual */
+    background-color: var(--tag-bg-color);
+    color: var(--tag-text-color);
+    border: var(--tag-border-width) solid var(--tag-border-color);
+    box-shadow: var(--tag-box-shadow);
+    
+    /* Interaction */
+    cursor: pointer;
+    transition: var(--tag-transition);
+    user-select: none;
+    position: relative;
+    
+    /* Accessibility */
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Tag States */
+.tag:hover {
+    background-color: var(--tag-hover-bg-color);
+    color: var(--tag-hover-text-color);
+    border-color: var(--tag-hover-border-color);
+    box-shadow: var(--tag-hover-box-shadow);
+    transform: var(--tag-hover-transform);
+    z-index: 5; /* Ensure hover elements appear above others */
+}
+
+.tag:focus-visible {
+    outline: var(--tag-focus-outline);
+    outline-offset: var(--tag-focus-outline-offset);
+}
+
+.tag.active {
+    background-color: var(--tag-active-bg-color);
+    color: var(--tag-active-text-color);
+    border-color: var(--tag-active-border-color);
+    box-shadow: var(--tag-active-box-shadow);
+} 

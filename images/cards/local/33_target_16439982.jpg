@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
-  <rect width="400" height="300" fill="#f5f5f5" stroke="#ddd" stroke-width="2"/>
-  <text x="200" y="150" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#888">Image Loading...</text>
-  <path d="M175,110 L225,110 L225,90 L245,120 L225,150 L225,130 L175,130 L175,150 L155,120 L175,90 Z" fill="#ccc"/>
-</svg> 

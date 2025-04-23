@@ -1,0 +1,277 @@
+/* 
+ * Image Gallery Tags Styles
+ * Specific tag type styles and variations for square tags
+ */
+
+/* Quality Tags */
+.tag.quality-tag.quality-high {
+    background-color: var(--tag-quality-high-bg);
+    color: var(--tag-quality-high);
+    border-color: var(--tag-quality-high-border);
+}
+
+.tag.quality-tag.quality-medium {
+    background-color: var(--tag-quality-medium-bg);
+    color: var(--tag-quality-medium);
+    border-color: var(--tag-quality-medium-border);
+}
+
+.tag.quality-tag.quality-low {
+    background-color: var(--tag-quality-low-bg);
+    color: var(--tag-quality-low);
+    border-color: var(--tag-quality-low-border);
+}
+
+/* Vein Type Tags */
+.tag.vein-tag.vein-hepatic {
+    background-color: var(--tag-vein-hepatic-bg);
+    color: var(--tag-vein-hepatic);
+    border-color: var(--tag-vein-hepatic-border);
+}
+
+.tag.vein-tag.vein-portal {
+    background-color: var(--tag-vein-portal-bg);
+    color: var(--tag-vein-portal);
+    border-color: var(--tag-vein-portal-border);
+}
+
+.tag.vein-tag.vein-renal {
+    background-color: var(--tag-vein-renal-bg);
+    color: var(--tag-vein-renal);
+    border-color: var(--tag-vein-renal-border);
+}
+
+/* Waveform Tags */
+.tag.waveform-tag.waveform-normal {
+    background-color: var(--tag-waveform-normal-bg);
+    color: var(--tag-waveform-normal);
+    border-color: var(--tag-waveform-normal-border);
+}
+
+.tag.waveform-tag.waveform-mild {
+    background-color: var(--tag-waveform-mild-bg);
+    color: var(--tag-waveform-mild);
+    border-color: var(--tag-waveform-mild-border);
+}
+
+.tag.waveform-tag.waveform-severe {
+    background-color: var(--tag-waveform-severe-bg);
+    color: var(--tag-waveform-severe);
+    border-color: var(--tag-waveform-severe-border);
+}
+
+/* QA Tags */
+.tag.qa-tag.qa-yes {
+    background-color: var(--tag-qa-yes-bg);
+    color: var(--tag-qa-yes);
+    border-color: var(--tag-qa-yes-border);
+}
+
+.tag.qa-tag.qa-no {
+    background-color: var(--tag-qa-no-bg);
+    color: var(--tag-qa-no);
+    border-color: var(--tag-qa-no-border);
+}
+
+/* Analysis Tags */
+.tag.analysis-tag {
+    background-color: var(--tag-analysis-bg);
+    color: var(--tag-analysis);
+    border-color: var(--tag-analysis-border);
+}
+
+/* Subtype Tags */
+.tag.subtype-tag {
+    background-color: var(--tag-subtype-bg);
+    color: var(--tag-subtype);
+    border-color: var(--tag-subtype-border);
+}
+
+/* COMPLETELY OVERHAULED TOOLTIP IMPLEMENTATION */
+/* First, reset any previous tooltip styles */
+.gallery-item .tag::before,
+.gallery-item .tag::after,
+.gallery-item .tag[data-tooltip]::before,
+.gallery-item .tag[data-tooltip]::after,
+.gallery-item .tag[title]::before,
+.gallery-item .tag[title]::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Base tag positioning */
+.gallery-item .tag {
+    position: relative !important;
+    z-index: 5 !important;
+    cursor: pointer !important;
+}
+
+/* Direct tooltip styling with inline-block to ensure proper display */
+.gallery-item .tag[data-tooltip] {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Create tooltip container */
+.gallery-item .tag[data-tooltip]:hover::after {
+    content: attr(data-tooltip) !important;
+    position: absolute !important;
+    top: -45px !important; /* Position above the tag */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 9999 !important;
+    width: auto !important;
+    min-width: 150px !important;
+    max-width: 250px !important;
+    padding: 8px 10px !important;
+    border-radius: 4px !important;
+    background-color: rgba(0, 0, 0, 0.85) !important;
+    color: white !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    word-wrap: break-word !important;
+    white-space: normal !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
+    pointer-events: none !important;
+    display: block !important;
+}
+
+/* Create tooltip arrow */
+.gallery-item .tag[data-tooltip]:hover::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-width: 6px !important;
+    border-style: solid !important;
+    border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+    display: block !important;
+}
+
+/* Ensure the tag itself is above content but below tooltip */
+.gallery-item .tag:hover {
+    z-index: 10 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12) !important;
+}
+
+/* Tag color adjustments on hover */
+.tag.quality-tag:hover,
+.tag.vein-tag:hover,
+.tag.waveform-tag:hover,
+.tag.qa-tag:hover,
+.tag.analysis-tag:hover,
+.tag.subtype-tag:hover {
+    color: #fff !important;
+}
+
+.tag.quality-tag.quality-high:hover {
+    background-color: var(--tag-quality-high) !important;
+}
+
+.tag.quality-tag.quality-medium:hover {
+    background-color: var(--tag-quality-medium) !important;
+}
+
+.tag.quality-tag.quality-low:hover {
+    background-color: var(--tag-quality-low) !important;
+}
+
+.tag.vein-tag.vein-hepatic:hover {
+    background-color: var(--tag-vein-hepatic) !important;
+}
+
+.tag.vein-tag.vein-portal:hover {
+    background-color: var(--tag-vein-portal) !important;
+}
+
+.tag.vein-tag.vein-renal:hover {
+    background-color: var(--tag-vein-renal) !important;
+}
+
+.tag.waveform-tag.waveform-normal:hover {
+    background-color: var(--tag-waveform-normal) !important;
+}
+
+.tag.waveform-tag.waveform-mild:hover {
+    background-color: var(--tag-waveform-mild) !important;
+}
+
+.tag.waveform-tag.waveform-severe:hover {
+    background-color: var(--tag-waveform-severe) !important;
+}
+
+.tag.qa-tag.qa-yes:hover {
+    background-color: var(--tag-qa-yes) !important;
+}
+
+.tag.qa-tag.qa-no:hover {
+    background-color: var(--tag-qa-no) !important;
+}
+
+.tag.analysis-tag:hover {
+    background-color: var(--tag-analysis) !important;
+}
+
+.tag.subtype-tag:hover {
+    background-color: var(--tag-subtype) !important;
+}
+
+/* Gallery item tags container */
+.gallery-item .tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important; 
+    padding: 8px 10px !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Square tag specific styling */
+.gallery-item .tag {
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 500 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Responsive adjustments for square tags */
+@media screen and (max-width: 768px) {
+    .gallery-item .tags {
+        gap: 5px !important;
+    }
+    
+    :root {
+        --tag-size: 1.9em; /* Slightly smaller on mobile */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gallery-item .tags {
+        gap: 4px !important;
+    }
+    
+    :root {
+        --tag-size: 1.7em; /* Even smaller on very small screens */
+    }
+}
+
+/* Filter tags (for search/filter) */
+.filter-tag {
+    width: auto !important; 
+    height: auto !important;
+    min-width: auto !important;
+    min-height: auto !important;
+    padding: 0.4em 0.8em !important;
+} 
