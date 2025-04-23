@@ -174,9 +174,9 @@ const tabooCards = [
     id: 16,
     prompt: "Place the probe transversely on the side of the neck, above the clavicle, slide posteriorly to find the nerve bundle appearing as circles between two muscles.",
     targetWord: "Interscalene Block View",
-    target_img: "images/cards/local/16_target.jpg",
+    target_img: "images/cards/local/16_target.png",
     probe_img: null,
-    local_target_img: "images/cards/local/16_target.jpg",
+    local_target_img: "images/cards/local/16_target.png",
     local_probe_img: null,
     tabooWords: ["Interscalene", "Plexus", "Roots", "Neck", "Block", "Brachial", "Scalene", "Stoplight"],
     remote_target_img: "https://www.researchgate.net/publication/308174144/figure/fig3/AS:408177389654018@1474328481595/Sonographic-view-of-interscalene-brachial-plexus-block-with-conventional-approach.png"

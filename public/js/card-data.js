@@ -1,4 +1,3 @@
-
 /*
  * Taboo Game Card Data
  */
@@ -16,6 +15,25 @@ const tabooCards = [
       "RUQ", 
       "Liver",
       "Kidney"
+    ]
+  },
+  {
+    "id": 16,
+    "prompt": "Place the probe transversely on the side of the neck, above the clavicle, slide posteriorly to find the nerve bundle appearing as circles between two muscles.",
+    "targetWord": "Interscalene Block View",
+    "target_img": "images/cards/local/16_target.png",
+    "probe_img": null,
+    "local_target_img": "images/cards/local/16_target.png",
+    "local_probe_img": null,
+    "tabooWords": [
+      "Interscalene", 
+      "Plexus", 
+      "Roots", 
+      "Neck", 
+      "Block", 
+      "Brachial", 
+      "Scalene", 
+      "Stoplight"
     ]
   }
 ];
